@@ -7,4 +7,5 @@
     <color name="TextColorSecondary">#252525</color>
     <color name="TextColorTertary">#979797</color>
     <color name="colorProgressBar">#bae2fe</color>
+    <color name="mediaBgColor">#5854a3</color>
 </resources>
