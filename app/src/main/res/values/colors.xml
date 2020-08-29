@@ -6,4 +6,5 @@
     <color name="TextColorPrimary">#0a0a0a</color>
     <color name="TextColorSecondary">#252525</color>
     <color name="TextColorTertary">#979797</color>
+    <color name="colorProgressBar">#bae2fe</color>
 </resources>
