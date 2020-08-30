@@ -18,6 +18,10 @@ class HomeFragment : Fragment() {
         return root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+    }
+
     companion object {
         @JvmStatic
         fun newInstance() = HomeFragment()
