@@ -9,7 +9,6 @@
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment">
 
-
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="65dp"
@@ -34,7 +33,7 @@
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
     <include
-        android:id="@+id/include"
+        android:id="@+id/vpHomePlayer"
         layout="@layout/player_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,9 +53,9 @@
         android:lineSpacingMultiplier="1.4"
         android:text="@string/main_screen_desc"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/include"
-        app:layout_constraintStart_toStartOf="@+id/include"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintEnd_toEndOf="@+id/vpHomePlayer"
+        app:layout_constraintStart_toStartOf="@+id/vpHomePlayer"
+        app:layout_constraintTop_toBottomOf="@+id/vpHomePlayer" />
 
     <TextView
         android:id="@+id/tvLabelUpNext"
@@ -71,15 +70,16 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvHomeFrag"
+        android:id="@+id/rvUpNext"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvLabelUpNext"
-        tools:listitem="@layout/viewholder_search" />
+        tools:listitem="@layout/viewholder_upnext" />
 
     <ImageView
         android:id="@+id/imageView5"

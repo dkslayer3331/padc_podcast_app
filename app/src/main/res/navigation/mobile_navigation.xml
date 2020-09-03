@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.mhst.padc_podcast_app.fragments.ProfileFragment"
+        android:name="com.mhst.padc_podcast_app.fragments.GenreFragment"
         android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_genre" />
 
     <fragment
         android:id="@+id/navigation_download"
