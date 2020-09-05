@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -24,12 +22,13 @@
     <TextView
         android:id="@+id/tvCategoryLabel"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:padding="24dp"
-        android:textSize="24dp"
+        android:text="Categories"
         android:textColor="@color/TextColorPrimary"
-        android:text="Categories"/>
+        android:textSize="24dp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvGenres"

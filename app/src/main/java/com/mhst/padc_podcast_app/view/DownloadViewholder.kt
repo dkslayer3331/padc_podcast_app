@@ -1,7 +1,7 @@
 package com.mhst.padc_podcast_app.view
 
 import android.view.View
-import com.mhst.padc_podcast_app.data.DummyVo
+import com.mhst.padc_podcast_app.data.dummy.DummyVo
 import com.mhst.shared.base.BaseViewHolder
 
 /**

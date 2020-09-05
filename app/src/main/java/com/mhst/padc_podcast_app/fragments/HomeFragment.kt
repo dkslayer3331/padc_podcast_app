@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.adapters.UpNextAdapter
-import com.mhst.padc_podcast_app.data.DummyDataUtils
+import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment() {

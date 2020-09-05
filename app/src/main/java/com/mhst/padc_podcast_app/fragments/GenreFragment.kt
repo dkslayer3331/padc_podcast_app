@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.adapters.GenreAdapter
-import com.mhst.padc_podcast_app.data.DummyDataUtils
+import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
 import kotlinx.android.synthetic.main.fragment_genre.*
 
 

@@ -3,7 +3,7 @@ package com.mhst.padc_podcast_app.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mhst.padc_podcast_app.R
-import com.mhst.padc_podcast_app.data.DummyVo
+import com.mhst.padc_podcast_app.data.dummy.DummyVo
 import com.mhst.padc_podcast_app.view.GenreViewHolder
 import com.mhst.shared.base.BaseRecyclerAdapter
 

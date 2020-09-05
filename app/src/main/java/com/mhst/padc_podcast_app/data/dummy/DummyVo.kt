@@ -1,4 +1,4 @@
-package com.mhst.padc_podcast_app.data
+package com.mhst.padc_podcast_app.data.dummy
 
 /**
  * Created by Moe Htet on 30,August,2020
