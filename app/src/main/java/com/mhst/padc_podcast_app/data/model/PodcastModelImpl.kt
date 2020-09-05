@@ -1,5 +1,6 @@
 package com.mhst.padc_podcast_app.data.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import io.reactivex.Observable
@@ -26,6 +27,7 @@ object PodcastModelImpl : PodcastModel, BaseModel() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
             },{
+                Log.d("firstTimeGenre",it.localizedMessage)
                 onError(it.localizedMessage)
             })
     }

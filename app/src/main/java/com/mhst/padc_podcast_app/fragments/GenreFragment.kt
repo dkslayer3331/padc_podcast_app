@@ -1,6 +1,7 @@
 package com.mhst.padc_podcast_app.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import com.mhst.padc_podcast_app.adapters.GenreAdapter
 import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.mvp.presenters.GenrePresenter
+import com.mhst.padc_podcast_app.mvp.presenters.GenrePresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.GenreView
 import kotlinx.android.synthetic.main.fragment_genre.*
 
@@ -29,7 +31,7 @@ class GenreFragment : Fragment(),GenreView {
     lateinit var genrePresenter: GenrePresenter
 
     private fun setupPresenter(){
-       // genrePresenter = ViewModelProvider(this).get(GenrePresenter::class.java)
+        genrePresenter = ViewModelProvider(this).get(GenrePresenterImpl::class.java)
     }
 
     private fun setupRecycler(){
@@ -46,7 +48,9 @@ class GenreFragment : Fragment(),GenreView {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        setupPresenter()
         setupRecycler()
+        genrePresenter.onUiReady(this)
     }
 
     companion object {
@@ -55,7 +59,7 @@ class GenreFragment : Fragment(),GenreView {
     }
 
     override fun displayGenres(genres: List<GenreVO>) {
-
+        Log.d("genres",genres.size.toString())
     }
 
     override fun enableSwipeRefresh() {
