@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.mhst.padc_podcast_app.data.vo.GenreVO
+import com.mhst.padc_podcast_app.persistance.dao.GenreDao
 
 /**
  * Created by Moe Htet on 05,September,2020
@@ -33,5 +34,6 @@ abstract class PodcastDb : RoomDatabase() {
 
     }
 
+    abstract fun genreDao() : GenreDao
 
 }

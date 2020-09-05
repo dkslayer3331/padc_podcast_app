@@ -18,6 +18,6 @@ interface PodcastApi {
     fun getRandomPodcast() : Observable<RandomPodcastResponse>
 
     @GET(GET_GENRE_LIST)
-    fun getGenres(@Query("genres")top_level_only : Int = 0) : Observable<GenreVO>
+    fun getGenres(@Query("genres")top_level_only : Int = 0) : Observable<GenreResponse>
 
 }
