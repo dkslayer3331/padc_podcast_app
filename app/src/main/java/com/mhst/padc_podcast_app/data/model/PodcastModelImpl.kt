@@ -1,8 +1,12 @@
 package com.mhst.padc_podcast_app.data.model
 
+import android.app.DownloadManager
 import android.util.Log
 import androidx.lifecycle.LiveData
+import com.mhst.padc_podcast_app.PLAYLIST_ID
+import com.mhst.padc_podcast_app.data.vo.DataVo
 import com.mhst.padc_podcast_app.data.vo.GenreVO
+import com.mhst.padc_podcast_app.data.vo.ItemVo
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.Observables
@@ -30,6 +34,29 @@ object PodcastModelImpl : PodcastModel, BaseModel() {
                 Log.d("firstTimeGenre",it.localizedMessage)
                 onError(it.localizedMessage)
             })
+    }
+
+    override fun getRandomPodcast(onError: (String) -> Unit) {
+        mApi.getRandomPodcast().flatMap {
+            return@flatMap Observable.just(it)
+        }
+    }
+
+    override fun getPlayListAndSaveToDb(onSuccess: () -> Unit, onError: (String) -> Unit) {
+        mApi.getPlayList(PLAYLIST_ID).flatMap {
+            mDb.playListDao().deleteInsert(it.items)
+            return@flatMap Observable.just(it)
+        }.subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+            },{
+                Log.d("firstTimePlaylistErr",it.localizedMessage)
+                onError(it.localizedMessage)
+            })
+    }
+
+    override fun getAllPlayLists(onError: (String) -> Unit): LiveData<List<ItemVo>> {
+        return mDb.playListDao().getAllTracks()
     }
 
 }

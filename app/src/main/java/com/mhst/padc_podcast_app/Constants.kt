@@ -17,3 +17,5 @@ const val GET_GENRE_LIST = "genres"
 //  /podcasts/:id?next_episode_pub_date=3&sort=recent_first
 const val GET_DETAIL_BY_ID = "podcasts"
 
+const val PLAYLIST_ID = "m1pe7z60bsw"
+
