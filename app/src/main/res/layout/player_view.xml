@@ -6,7 +6,6 @@
     android:layout_height="wrap_content"
     android:background="@drawable/round_corner_purple_textview">
 
-
     <ImageView
         android:id="@+id/ivPlayerView"
         android:layout_width="120dp"
@@ -69,51 +68,49 @@
         android:id="@+id/tvSpeedOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:text="x1"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/ivPlayBackward"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPlayerView" />
+        app:layout_constraintTop_toBottomOf="@+id/ivPlayerView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/ivPlayBackward"
         android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvSpeedOne"
-        app:layout_constraintEnd_toStartOf="@+id/imageView6"
+        app:layout_constraintEnd_toStartOf="@+id/ivPlay"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvSpeedOne"
         app:layout_constraintTop_toTopOf="@+id/tvSpeedOne"
-        app:srcCompat="@drawable/ic_baseline_replay_30_24" />
+        app:srcCompat="@drawable/ic_replay_10" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/ivPause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPlayBackward"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPlay"
         app:layout_constraintEnd_toStartOf="@+id/ivPlayForward"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivPlayBackward"
-        app:layout_constraintTop_toTopOf="@+id/ivPlayBackward"
+        app:layout_constraintStart_toEndOf="@+id/ivPlay"
+        app:layout_constraintTop_toTopOf="@+id/ivPlay"
         app:srcCompat="@drawable/ic_baseline_pause_circle_filled_24" />
 
     <ImageView
         android:id="@+id/ivPlayForward"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView6"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPause"
         app:layout_constraintEnd_toStartOf="@+id/tvPlayViewZz"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView6"
-        app:layout_constraintTop_toTopOf="@+id/imageView6"
-        app:srcCompat="@drawable/ic_baseline_replay_30_24" />
+        app:layout_constraintStart_toEndOf="@+id/ivPause"
+        app:layout_constraintTop_toTopOf="@+id/ivPause"
+        app:srcCompat="@drawable/ic_forward_30" />
 
     <TextView
         android:id="@+id/tvPlayViewZz"
@@ -127,5 +124,16 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/ivPlayForward"
         app:layout_constraintTop_toTopOf="@+id/ivPlayForward" />
+
+    <ImageView
+        android:id="@+id/ivPlay"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/ic_baseline_play_circle_filled_24"
+        app:layout_constraintBottom_toBottomOf="@+id/ivPlayBackward"
+        app:layout_constraintEnd_toStartOf="@+id/ivPause"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ivPlayBackward"
+        app:layout_constraintTop_toTopOf="@+id/ivPlayBackward" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

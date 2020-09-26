@@ -3,8 +3,6 @@ package com.mhst.padc_podcast_app.mvp.presenters
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.mhst.padc_podcast_app.data.model.PodcastModel
-import com.mhst.padc_podcast_app.data.model.PodcastModelImpl
 import com.mhst.padc_podcast_app.mvp.AbstractBasePresenter
 import com.mhst.padc_podcast_app.mvp.view.GenreView
 
@@ -13,7 +11,7 @@ import com.mhst.padc_podcast_app.mvp.view.GenreView
  */
 class GenrePresenterImpl : GenrePresenter, AbstractBasePresenter<GenreView>() {
 
-    private val model : PodcastModel = PodcastModelImpl
+   // private val model : PodcastModel = PodcastModelImpl
 
     override fun onUiReady(lifecycleOwner: LifecycleOwner) {
         getGenres(lifecycleOwner)
@@ -24,14 +22,7 @@ class GenrePresenterImpl : GenrePresenter, AbstractBasePresenter<GenreView>() {
     }
 
     private fun getGenres(lifecycleOwner: LifecycleOwner){
-        mView?.enableSwipeRefresh()
-        model.getAllGenres {
-            mView?.disableSwipeRefresh()
-            Log.d("ErrGenre",it)
-        }.observe(lifecycleOwner, Observer {
-            mView?.disableSwipeRefresh()
-            mView?.displayGenres(it)
-        })
+
     }
 
 }

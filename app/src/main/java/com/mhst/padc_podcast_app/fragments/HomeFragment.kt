@@ -20,7 +20,7 @@ class HomeFragment : Fragment(),HomeView {
 
     private lateinit var upNextAdapter: UpNextAdapter
 
-    private lateinit var homePresenter: HomePresenter
+   // private lateinit var homePresenter: HomePresenter
 
     private fun setupRecycler(){
         upNextAdapter = UpNextAdapter()
@@ -29,7 +29,7 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     private fun setupPresenter(){
-        homePresenter = ViewModelProvider(this).get(HomePresenterImpl::class.java)
+        //homePresenter = ViewModelProvider(this).get(HomePresenterImpl::class.java)
     }
 
     override fun onCreateView(
@@ -44,7 +44,7 @@ class HomeFragment : Fragment(),HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupRecycler()
         setupPresenter()
-        homePresenter.onUiReady(this)
+        //homePresenter.onUiReady(this)
     }
 
     companion object {

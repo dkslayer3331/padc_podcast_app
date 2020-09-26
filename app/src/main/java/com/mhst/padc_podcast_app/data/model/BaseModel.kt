@@ -3,7 +3,6 @@ package com.mhst.padc_podcast_app.data.model
 import android.content.Context
 import com.mhst.padc_podcast_app.BASE_URL
 import com.mhst.padc_podcast_app.network.PodcastApi
-import com.mhst.padc_podcast_app.persistance.database.PodcastDb
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -17,7 +16,7 @@ abstract class BaseModel {
 
     protected var mApi : PodcastApi
 
-    protected lateinit var mDb : PodcastDb
+  //  protected lateinit var mDb : PodcastDb
 
     init {
         val mOkHttpClient = OkHttpClient.Builder()
@@ -38,7 +37,7 @@ abstract class BaseModel {
     }
 
     fun initDb(context: Context){
-        mDb = PodcastDb.getDBInstance(context)
+        //mDb = PodcastDb.getDBInstance(context)
     }
 
 }

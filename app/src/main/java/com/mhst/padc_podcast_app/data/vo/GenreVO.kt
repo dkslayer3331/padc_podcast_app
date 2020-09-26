@@ -10,7 +10,6 @@ import com.mhst.padc_podcast_app.persistance.typedConverters.GenreTypedConverter
  * Created by Moe Htet on 05,September,2020
  */
 data class GenreVO(
-    @PrimaryKey
     @SerializedName("id")
     var id : String = "",
     @SerializedName("parent_id")
