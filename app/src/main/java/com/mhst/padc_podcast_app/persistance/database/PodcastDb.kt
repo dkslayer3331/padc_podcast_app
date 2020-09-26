@@ -6,13 +6,15 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.mhst.padc_podcast_app.data.vo.DataVo
 import com.mhst.padc_podcast_app.data.vo.GenreVO
+import com.mhst.padc_podcast_app.data.vo.PlaylistVo
+import com.mhst.padc_podcast_app.data.vo.PodcastVo
 import com.mhst.padc_podcast_app.persistance.dao.GenreDao
-import com.mhst.padc_podcast_app.persistance.dao.PlayListDao
 
 /**
  * Created by Moe Htet on 05,September,2020
  */
-@Database(entities = [GenreVO::class,DataVo::class], version = 1, exportSchema = false)
+@Database(entities = [GenreVO::class,DataVo::class,PlaylistVo::class,PodcastVo::class], version = 7, exportSchema = false)
+//@TypeConverters(PodcastConverter::class,DataVoConverter::class,ItemVoConverter::class)
 abstract class PodcastDb : RoomDatabase() {
     companion object {
         val DB_NAME = "PADC_PODCAST.DB"
@@ -35,7 +37,5 @@ abstract class PodcastDb : RoomDatabase() {
     }
 
     abstract fun genreDao() : GenreDao
-
-    abstract fun playListDao() : PlayListDao
 
 }

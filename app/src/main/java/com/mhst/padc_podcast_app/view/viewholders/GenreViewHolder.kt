@@ -1,4 +1,4 @@
-package com.mhst.padc_podcast_app.view
+package com.mhst.padc_podcast_app.view.viewholders
 
 import android.view.View
 import com.mhst.padc_podcast_app.data.dummy.DummyVo

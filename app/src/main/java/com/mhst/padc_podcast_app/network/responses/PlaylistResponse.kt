@@ -1,23 +1,20 @@
 package com.mhst.padc_podcast_app.network.responses
 
 import com.google.gson.annotations.SerializedName
-import com.mhst.padc_podcast_app.data.vo.ItemVo
+import com.mhst.padc_podcast_app.data.vo.PlaylistVo
 
 data class PlaylistResponse(
 
-	@SerializedName("total")
-	val total: Int? = null,
+	@SerializedName("id")
+	val id : String = "",
 
-	@SerializedName("visibility")
-	val visibility: String? = null,
-
-	@SerializedName("last_timestamp_ms")
-	val lastTimestampMs: Long? = null,
+	@SerializedName("name")
+	val name : String = "",
 
 	@SerializedName("type")
 	val type: String? = null,
 
 	@SerializedName("items")
-	var items : List<ItemVo> = listOf()
+	var items : List<PlaylistVo> = listOf()
 
 )

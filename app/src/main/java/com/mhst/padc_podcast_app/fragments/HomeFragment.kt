@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.adapters.UpNextAdapter
 import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
-import com.mhst.padc_podcast_app.data.vo.ItemVo
+import com.mhst.padc_podcast_app.data.vo.PlaylistVo
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenter
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.HomeView
@@ -52,7 +52,7 @@ class HomeFragment : Fragment(),HomeView {
         fun newInstance() = HomeFragment()
     }
 
-    override fun displayTracks(tracks: List<ItemVo>) {
+    override fun displayTracks(tracks: List<PlaylistVo>) {
         Log.d("tracks",tracks.size.toString())
     }
 

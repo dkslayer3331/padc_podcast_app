@@ -1,7 +1,11 @@
 package com.mhst.padc_podcast_app.data.vo
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
+//@TypeConverters(PodcastConverter::class)
 data class PodcastVo(
 
 	@SerializedName("image")
@@ -10,15 +14,16 @@ data class PodcastVo(
 	@SerializedName("thumbnail")
 	var thumbnail: String = "",
 
-	@field:SerializedName("publisher")
+	@SerializedName("publisher")
 	var publisher: String = "",
 
-	@field:SerializedName("id")
+	@PrimaryKey
+	@SerializedName("id")
 	var id: String = "",
 
-	@field:SerializedName("title")
+	@SerializedName("title")
 	var title: String = "",
 
-	@field:SerializedName("listennotes_url")
+	@SerializedName("listennotes_url")
 	var listenNotesUrl: String = ""
 )

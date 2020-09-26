@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.data.dummy.DummyVo
-import com.mhst.padc_podcast_app.view.GenreViewHolder
+import com.mhst.padc_podcast_app.view.viewholders.GenreViewHolder
 import com.mhst.shared.base.BaseRecyclerAdapter
 
 /**

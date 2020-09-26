@@ -1,6 +1,9 @@
 package com.mhst.padc_podcast_app.data.vo
 
+import androidx.room.Embedded
+import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
 data class DataVo(
@@ -46,5 +49,6 @@ data class DataVo(
 	val maybeAudioInvalid: Boolean? = null,
 
 	@SerializedName("podcast")
-	val podcast : PodcastVo? = null
+	val podcast : PodcastVo
+
 )

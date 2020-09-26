@@ -48,7 +48,7 @@
 
         <include
             android:id="@+id/vpDetailReaction"
-            layout="@layout/viewpod_detail"
+            layout="@layout/viewpod_reaction"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

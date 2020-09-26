@@ -61,18 +61,5 @@ class MainActivity : AppCompatActivity() {
             false
         })
 
-
-//        val navView: BottomNavigationView = findViewById(R.id.nav_view)
-//
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        val appBarConfiguration = AppBarConfiguration(setOf(
-//            R.id.navigation_home,
-//            R.id.navigation_search,
-//            R.id.navigation_download
-//        ))
-//        setupActionBarWithNavController(navController, appBarConfiguration)
-//        navView.setupWithNavController(navController)
-
-
     }
 }
