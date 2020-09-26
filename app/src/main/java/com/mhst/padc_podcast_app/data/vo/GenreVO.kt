@@ -11,9 +11,9 @@ import com.mhst.padc_podcast_app.persistance.typedConverters.GenreTypedConverter
  */
 data class GenreVO(
     @SerializedName("id")
-    var id : String = "",
+    var id : Long = 0L,
     @SerializedName("parent_id")
-    var parentId : String = "",
+    var parentId : Long = 0L,
     @SerializedName("name")
     var name : String = ""
 )

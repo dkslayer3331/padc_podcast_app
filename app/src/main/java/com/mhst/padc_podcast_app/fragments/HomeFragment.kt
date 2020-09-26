@@ -43,7 +43,7 @@ class HomeFragment : Fragment(),HomeView {
 
     private fun setupPresenter(){
        activity?.let {
-           homePresenter = ViewModelProviders.of(it)[HomePresenterImpl::class.java]
+           homePresenter = ViewModelProvider(it)[HomePresenterImpl::class.java]
            homePresenter.initPresenter(this)
        }
     }
@@ -58,10 +58,12 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         setupRecycler()
         setupPresenter()
         exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
         homePresenter.onUiReady(this)
+        homePresenter.getRandomPodcast()
     }
 
     companion object {
@@ -71,6 +73,7 @@ class HomeFragment : Fragment(),HomeView {
 
     override fun displayTracks(tracks: List<PlaylistVo>) {
         upNextAdapter.setNewData(tracks.toMutableList())
+
     }
 
     override fun enableSwipeRefresh() {
@@ -82,6 +85,7 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun playRandomPodcast(url: String?) {
+        if(vpHomePlayer != null)
         url?.let {
             exoplayerViewpod.bindData(url)
         }

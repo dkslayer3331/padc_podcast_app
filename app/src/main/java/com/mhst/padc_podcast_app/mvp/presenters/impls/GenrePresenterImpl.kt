@@ -1,5 +1,6 @@
 package com.mhst.padc_podcast_app.mvp.presenters.impls
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import com.mhst.padc_podcast_app.data.model.PodcastModel
 import com.mhst.padc_podcast_app.data.model.PodcastModelImpl
@@ -15,15 +16,17 @@ class GenrePresenterImpl : GenrePresenter, AbstractBasePresenter<GenreView>() {
     private val model : PodcastModel = PodcastModelImpl
 
     override fun onUiReady(lifecycleOwner: LifecycleOwner) {
-        getGenres(lifecycleOwner)
+        model.getGenres(onSuccess = {
+            Log.d("successGenre",it.size.toString())
+            mView?.displayGenres(it)
+        },onFail = {
+            mView?.showError(it)
+        })
     }
 
     override fun onSwipeRefresh(lifecycleOwner: LifecycleOwner) {
-        getGenres(lifecycleOwner)
-    }
-
-    private fun getGenres(lifecycleOwner: LifecycleOwner){
 
     }
+
 
 }

@@ -32,12 +32,12 @@ class GenreFragment : Fragment(),GenreView {
 
     private fun setupPresenter(){
         genrePresenter = ViewModelProvider(this).get(GenrePresenterImpl::class.java)
+        genrePresenter.initPresenter(this)
     }
 
     private fun setupRecycler(){
         genreAdapter = GenreAdapter()
         rvGenres.adapter = genreAdapter
-        genreAdapter.setNewData(DummyDataUtils.getDummys())
     }
 
     override fun onCreateView(
@@ -59,7 +59,8 @@ class GenreFragment : Fragment(),GenreView {
     }
 
     override fun displayGenres(genres: List<GenreVO>) {
-        Log.d("genres",genres.size.toString())
+        Log.d("genreSize",genres.size.toString())
+        genreAdapter.setNewData(genres.toMutableList())
     }
 
     override fun enableSwipeRefresh() {
@@ -71,6 +72,6 @@ class GenreFragment : Fragment(),GenreView {
     }
 
     override fun showError(message: String) {
-
+        Log.d("genreErr",message)
     }
 }
