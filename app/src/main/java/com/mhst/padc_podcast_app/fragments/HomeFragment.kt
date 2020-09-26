@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.adapters.UpNextAdapter
 import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
 import com.mhst.padc_podcast_app.data.vo.PlaylistVo
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenter
-import com.mhst.padc_podcast_app.mvp.presenters.HomePresenterImpl
+import com.mhst.padc_podcast_app.mvp.presenters.impls.HomePresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.HomeView
 import com.mhst.padc_podcast_app.view.viewpods.ExoplayerViewpod
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -21,7 +22,7 @@ class HomeFragment : Fragment(),HomeView {
 
     private lateinit var upNextAdapter: UpNextAdapter
 
-   // private lateinit var homePresenter: HomePresenter
+    private lateinit var homePresenter: HomePresenter
 
     lateinit var exoplayerViewpod: ExoplayerViewpod
 
@@ -38,11 +39,13 @@ class HomeFragment : Fragment(),HomeView {
     private fun setupRecycler(){
         upNextAdapter = UpNextAdapter()
         rvUpNext.adapter = upNextAdapter
-        upNextAdapter.setNewData(DummyDataUtils.getDummys())
     }
 
     private fun setupPresenter(){
-        //homePresenter = ViewModelProvider(this).get(HomePresenterImpl::class.java)
+       activity?.let {
+           homePresenter = ViewModelProviders.of(it)[HomePresenterImpl::class.java]
+           homePresenter.initPresenter(this)
+       }
     }
 
     override fun onCreateView(
@@ -57,8 +60,8 @@ class HomeFragment : Fragment(),HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupRecycler()
         setupPresenter()
-        exoplayerViewpod =vpHomePlayer as ExoplayerViewpod
-        //homePresenter.onUiReady(this)
+        exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
+        homePresenter.onUiReady(this)
     }
 
     companion object {
@@ -67,7 +70,7 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun displayTracks(tracks: List<PlaylistVo>) {
-        Log.d("tracks",tracks.size.toString())
+        upNextAdapter.setNewData(tracks.toMutableList())
     }
 
     override fun enableSwipeRefresh() {
@@ -76,5 +79,11 @@ class HomeFragment : Fragment(),HomeView {
 
     override fun disableSwipeRefresh() {
 
+    }
+
+    override fun playRandomPodcast(url: String?) {
+        url?.let {
+            exoplayerViewpod.bindData(url)
+        }
     }
 }

@@ -10,4 +10,5 @@ interface GenreView : BaseView {
     fun displayGenres(genres : List<GenreVO>)
     fun enableSwipeRefresh()
     fun disableSwipeRefresh()
+    fun showError(message : String)
 }

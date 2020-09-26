@@ -12,7 +12,7 @@ import com.mhst.padc_podcast_app.adapters.GenreAdapter
 import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.mvp.presenters.GenrePresenter
-import com.mhst.padc_podcast_app.mvp.presenters.GenrePresenterImpl
+import com.mhst.padc_podcast_app.mvp.presenters.impls.GenrePresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.GenreView
 import kotlinx.android.synthetic.main.fragment_genre.*
 
@@ -67,6 +67,10 @@ class GenreFragment : Fragment(),GenreView {
     }
 
     override fun disableSwipeRefresh() {
+
+    }
+
+    override fun showError(message: String) {
 
     }
 }

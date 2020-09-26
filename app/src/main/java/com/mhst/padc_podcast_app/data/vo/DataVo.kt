@@ -9,46 +9,45 @@ import com.google.gson.annotations.SerializedName
 data class DataVo(
 
 	@SerializedName("image")
-	val image: String? = null,
+	var image: String = "",
 
 	@SerializedName("thumbnail")
-	val thumbnail: String? = null,
+	var thumbnail: String = "",
 
 	@SerializedName("explicit_content")
-	val explicitContent: Boolean? = null,
+	var explicitContent: Boolean = false,
 
 	@field:SerializedName("listennotes_edit_url")
-	val listennotesEditUrl: String? = null,
+	var listennotesEditUrl: String = "",
 
 	@field:SerializedName("audio_length_sec")
-	val audioLengthSec: Int? = null,
+	val audioLengthSec: Int = 0,
 
 	@SerializedName("link")
-	val link: String? = null,
+	var link: String = "",
 
 	@SerializedName("description")
-	val description: String? = null,
+	var description: String = "",
 
 	@SerializedName("title")
-	val title: String? = null,
+	var title: String = "",
 
 	@SerializedName("listennotes_url")
-	val listennotesUrl: String? = null,
+	var listennotesUrl: String = "",
 
 	@SerializedName("audio")
-	val audio: String? = null,
+	var audio: String = "",
 
-	@PrimaryKey
 	@SerializedName("id")
-	val id: String,
+	var id: String = "",
 
 	@SerializedName("pub_date_ms")
-	val pubDateMs: Long? = null,
+	var pubDateMs: Long = 0L,
 
 	@SerializedName("maybe_audio_invalid")
-	val maybeAudioInvalid: Boolean? = null,
+	var maybeAudioInvalid: Boolean = false,
 
 	@SerializedName("podcast")
-	val podcast : PodcastVo
+	var podcast : PodcastVo = PodcastVo()
 
 )

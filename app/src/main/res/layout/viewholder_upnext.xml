@@ -7,7 +7,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/ivPlayList"
         android:layout_width="110dp"
         android:layout_height="120dp"
         android:layout_marginStart="16dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvSearchLabel"
+        android:id="@+id/tvPlaylistLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -29,11 +29,11 @@
         android:paddingRight="8dp"
         android:paddingLeft="8dp"
         android:background="@drawable/round_corner_textview_yellow"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toTopOf="@+id/imageView2" />
+        app:layout_constraintStart_toEndOf="@+id/ivPlayList"
+        app:layout_constraintTop_toTopOf="@+id/ivPlayList" />
 
     <TextView
-        android:id="@+id/tvSearchTitle"
+        android:id="@+id/tvPlaylistTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -44,8 +44,8 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/tvSearchLabel"
-        app:layout_constraintTop_toBottomOf="@+id/tvSearchLabel" />
+        app:layout_constraintStart_toStartOf="@+id/tvPlaylistLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvPlaylistLabel" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -53,9 +53,9 @@
         android:layout_height="40dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="#FFEB3B"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSearchTitle"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPlaylistTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvSearchTitle"
+        app:layout_constraintTop_toTopOf="@+id/tvPlaylistTitle"
         app:srcCompat="@drawable/download" />
 
     <ProgressBar
@@ -67,7 +67,7 @@
         android:outlineSpotShadowColor="@color/colorProgressBar"
         android:progress="50"
         app:layout_constraintEnd_toStartOf="@+id/tvHoursLeft"
-        app:layout_constraintStart_toStartOf="@+id/tvSearchTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvPlaylistTitle"
         app:layout_constraintTop_toTopOf="@+id/tvHoursLeft" />
 
     <TextView

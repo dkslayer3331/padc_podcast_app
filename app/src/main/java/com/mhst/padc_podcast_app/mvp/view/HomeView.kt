@@ -10,4 +10,5 @@ interface HomeView : BaseView {
     fun displayTracks(tracks : List<PlaylistVo>)
     fun enableSwipeRefresh()
     fun disableSwipeRefresh()
+    fun playRandomPodcast(url : String?)
 }
