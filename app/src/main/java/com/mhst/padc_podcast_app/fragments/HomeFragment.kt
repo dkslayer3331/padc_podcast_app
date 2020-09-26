@@ -14,6 +14,7 @@ import com.mhst.padc_podcast_app.data.vo.PlaylistVo
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenter
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.HomeView
+import com.mhst.padc_podcast_app.view.viewpods.ExoplayerViewpod
 import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : Fragment(),HomeView {
@@ -21,6 +22,18 @@ class HomeFragment : Fragment(),HomeView {
     private lateinit var upNextAdapter: UpNextAdapter
 
    // private lateinit var homePresenter: HomePresenter
+
+    lateinit var exoplayerViewpod: ExoplayerViewpod
+
+    override fun onStop() {
+        super.onStop()
+        exoplayerViewpod.releasePlayer()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        exoplayerViewpod.releasePlayer()
+    }
 
     private fun setupRecycler(){
         upNextAdapter = UpNextAdapter()
@@ -44,6 +57,7 @@ class HomeFragment : Fragment(),HomeView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setupRecycler()
         setupPresenter()
+        exoplayerViewpod =vpHomePlayer as ExoplayerViewpod
         //homePresenter.onUiReady(this)
     }
 
