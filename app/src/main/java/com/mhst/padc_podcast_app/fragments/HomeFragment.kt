@@ -7,10 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.mhst.padc_podcast_app.R
+import com.mhst.padc_podcast_app.activities.DetailActivity
 import com.mhst.padc_podcast_app.adapters.UpNextAdapter
-import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
 import com.mhst.padc_podcast_app.data.vo.PlaylistVo
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenter
 import com.mhst.padc_podcast_app.mvp.presenters.impls.HomePresenterImpl
@@ -37,7 +36,7 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     private fun setupRecycler(){
-        upNextAdapter = UpNextAdapter()
+        upNextAdapter = UpNextAdapter(this)
         rvUpNext.adapter = upNextAdapter
     }
 
@@ -89,5 +88,9 @@ class HomeFragment : Fragment(),HomeView {
         url?.let {
             exoplayerViewpod.bindData(url)
         }
+    }
+
+    override fun onTap(playlistVo: PlaylistVo) {
+        startActivity(DetailActivity.onNewIntent(requireContext(),playlistVo))
     }
 }

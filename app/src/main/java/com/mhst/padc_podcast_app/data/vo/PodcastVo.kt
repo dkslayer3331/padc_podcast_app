@@ -17,7 +17,6 @@ data class PodcastVo(
 	@SerializedName("publisher")
 	var publisher: String = "",
 
-	@PrimaryKey
 	@SerializedName("id")
 	var id: String = "",
 
