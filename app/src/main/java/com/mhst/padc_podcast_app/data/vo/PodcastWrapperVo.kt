@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
-data class DataVo(
+data class PodcastWrapperVo(
 
 	@SerializedName("image")
 	var image: String = "",

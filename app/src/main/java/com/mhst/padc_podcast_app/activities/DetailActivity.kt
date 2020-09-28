@@ -4,25 +4,57 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Html
+import androidx.lifecycle.ViewModelProvider
+import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.data.vo.PlaylistVo
+import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
+import com.mhst.padc_podcast_app.mvp.presenters.DetailPresenter
+import com.mhst.padc_podcast_app.mvp.presenters.impls.DetailPresenterImpl
+import com.mhst.padc_podcast_app.mvp.view.DetailView
+import kotlinx.android.synthetic.main.activity_detail.*
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(),DetailView {
+
+
+    lateinit var mDetailPresenter: DetailPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+        val jsonStr = intent.getStringExtra(IE_PODCAST)
+
+        val data = Gson().fromJson(jsonStr,PlaylistVo::class.java)
+
+        setupPresenter()
+
+        mDetailPresenter.onUiReady(this,data)
+
+    }
+
+    private fun setupPresenter(){
+        mDetailPresenter = ViewModelProvider(this)[DetailPresenterImpl::class.java]
+        mDetailPresenter.initPresenter(this)
     }
 
     companion object{
 
         const val IE_PODCAST = "IE_PODCAST"
 
-        fun onNewIntent(context: Context,playlistVo: PlaylistVo) : Intent{
+        fun onNewIntent(context: Context,podcastWrapperVo: PodcastWrapperVo) : Intent{
             val intent = Intent(context,DetailActivity::class.java)
-            intent.putExtra(IE_PODCAST, Gson().toJson(playlistVo))
+            intent.putExtra(IE_PODCAST, Gson().toJson(podcastWrapperVo))
             return intent
         }
+    }
+
+    override fun binData(playlistVo: PlaylistVo) {
+            Glide.with(this).load(playlistVo.data.image).into(ivDetailBanner)
+            tvDetailTitle.text = playlistVo.data.title
+            tvDetailDesc.text = Html.fromHtml(playlistVo.data.description)
     }
 
 }

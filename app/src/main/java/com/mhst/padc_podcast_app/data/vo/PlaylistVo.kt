@@ -1,7 +1,5 @@
 package com.mhst.padc_podcast_app.data.vo
 
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 /**
@@ -15,7 +13,7 @@ data class PlaylistVo(
     @SerializedName("notes")
     var notes : String = "",
     @SerializedName("data")
-    val data : DataVo = DataVo(),
+    val data : PodcastWrapperVo = PodcastWrapperVo(),
     @SerializedName("added_at_ms")
     var addedAtMs : Long = 0L
 )

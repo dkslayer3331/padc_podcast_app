@@ -4,6 +4,7 @@ import com.mhst.padc_podcast_app.data.PodCastFirebaseApi
 import com.mhst.padc_podcast_app.data.PodcastImpl
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PlaylistVo
+import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.network.responses.RandomPodcastResponse
 
 /**
@@ -15,13 +16,16 @@ object PodcastModelImpl : PodcastModel {
     override var mApi: PodCastFirebaseApi = PodcastImpl
 
     override fun getRandomPodcast(
-        onSuccess: (RandomPodcastResponse) -> Unit,
+        onSuccess: (PodcastWrapperVo) -> Unit,
         onFail: (String) -> Unit
     ) {
         mApi.getRandomPodcast(onSuccess,onFail)
     }
 
-    override fun getPlayList(onSuccess: (List<PlaylistVo>) -> Unit, onFail: (String) -> Unit) {
+    override fun getPlayList(
+        onSuccess: (List<PodcastWrapperVo>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
         mApi.getPlayList(onSuccess, onFail)
     }
 

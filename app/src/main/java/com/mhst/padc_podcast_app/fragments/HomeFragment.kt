@@ -11,6 +11,7 @@ import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.activities.DetailActivity
 import com.mhst.padc_podcast_app.adapters.UpNextAdapter
 import com.mhst.padc_podcast_app.data.vo.PlaylistVo
+import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenter
 import com.mhst.padc_podcast_app.mvp.presenters.impls.HomePresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.HomeView
@@ -23,7 +24,7 @@ class HomeFragment : Fragment(),HomeView {
 
     private lateinit var homePresenter: HomePresenter
 
-    lateinit var exoplayerViewpod: ExoplayerViewpod
+    private lateinit var exoplayerViewpod: ExoplayerViewpod
 
     override fun onStop() {
         super.onStop()
@@ -70,7 +71,7 @@ class HomeFragment : Fragment(),HomeView {
         fun newInstance() = HomeFragment()
     }
 
-    override fun displayTracks(tracks: List<PlaylistVo>) {
+    override fun displayTracks(tracks: List<PodcastWrapperVo>) {
         upNextAdapter.setNewData(tracks.toMutableList())
 
     }
@@ -90,7 +91,7 @@ class HomeFragment : Fragment(),HomeView {
         }
     }
 
-    override fun onTap(playlistVo: PlaylistVo) {
-        startActivity(DetailActivity.onNewIntent(requireContext(),playlistVo))
+    override fun onTap(podcastWrapperVo: PodcastWrapperVo) {
+        startActivity(DetailActivity.onNewIntent(requireContext(),podcastWrapperVo))
     }
 }

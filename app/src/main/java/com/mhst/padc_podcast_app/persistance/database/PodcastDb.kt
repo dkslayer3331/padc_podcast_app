@@ -1,14 +1,5 @@
 package com.mhst.padc_podcast_app.persistance.database
 
-import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.mhst.padc_podcast_app.data.vo.DataVo
-import com.mhst.padc_podcast_app.data.vo.GenreVO
-import com.mhst.padc_podcast_app.data.vo.PlaylistVo
-import com.mhst.padc_podcast_app.data.vo.PodcastVo
-
 /**
  * Created by Moe Htet on 05,September,2020
  */

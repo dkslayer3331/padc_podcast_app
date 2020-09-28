@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.mhst.padc_podcast_app.data.PodCastFirebaseApi
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PlaylistVo
+import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.network.responses.RandomPodcastResponse
 
 /**
@@ -13,8 +14,8 @@ interface PodcastModel {
 
     var mApi : PodCastFirebaseApi
 
-    fun getRandomPodcast(onSuccess : (RandomPodcastResponse) -> Unit, onFail : (String) -> Unit)
-    fun getPlayList(onSuccess: (List<PlaylistVo>) -> Unit, onFail : (String) -> Unit)
+    fun getRandomPodcast(onSuccess : (PodcastWrapperVo) -> Unit, onFail : (String) -> Unit)
+    fun getPlayList(onSuccess: (List<PodcastWrapperVo>) -> Unit, onFail : (String) -> Unit)
     fun getGenres(onSuccess: (List<GenreVO>) -> Unit, onFail : (String) -> Unit)
 
 }
