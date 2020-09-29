@@ -5,8 +5,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import com.mhst.padc_podcast_app.persistance.typedConverters.PodcastConverter
 
 @Entity(tableName = "episodes")
+@TypeConverters(PodcastConverter::class)
 data class PodcastWrapperVo(
 
 	@SerializedName("image")

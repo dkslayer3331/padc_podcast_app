@@ -12,14 +12,14 @@ import com.mhst.padc_podcast_app.data.vo.PodcastVo
 class PodcastConverter {
 
     @TypeConverter
-    fun toString(list : List<PodcastVo>) : String{
-        return Gson().toJson(list)
+    fun toString(podcast : PodcastVo) : String{
+        return Gson().toJson(podcast)
     }
 
     @TypeConverter
-    fun toList(jsonStr : String) : List<String>{
-        val podcasts = object : TypeToken<ArrayList<PodcastVo>>() {}.type
-        return Gson().fromJson(jsonStr, podcasts)
+    fun toObj(jsonStr : String) : PodcastVo{
+        val podcast = object : TypeToken<PodcastVo>() {}.type
+        return Gson().fromJson(jsonStr, podcast)
     }
 
 }
