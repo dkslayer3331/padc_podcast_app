@@ -4,8 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
+import com.mhst.padc_podcast_app.persistance.typedConverters.PodcastConverter
 
-//@TypeConverters(PodcastConverter::class)
+@TypeConverters(PodcastConverter::class)
 data class PodcastVo(
 
 	@SerializedName("image")

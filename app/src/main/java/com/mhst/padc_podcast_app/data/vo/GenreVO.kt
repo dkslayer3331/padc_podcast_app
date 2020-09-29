@@ -9,7 +9,9 @@ import com.mhst.padc_podcast_app.persistance.typedConverters.GenreTypedConverter
 /**
  * Created by Moe Htet on 05,September,2020
  */
+@Entity(tableName = "genres")
 data class GenreVO(
+    @PrimaryKey
     @SerializedName("id")
     var id : Long = 0L,
     @SerializedName("parent_id")

@@ -6,6 +6,7 @@ import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "episodes")
 data class PodcastWrapperVo(
 
 	@SerializedName("image")
@@ -38,6 +39,7 @@ data class PodcastWrapperVo(
 	@SerializedName("audio")
 	var audio: String = "",
 
+	@PrimaryKey
 	@SerializedName("id")
 	var id: String = "",
 
