@@ -9,6 +9,5 @@ import com.mhst.padc_podcast_app.mvp.view.HomeView
  */
 interface HomePresenter : BasePresenter<HomeView> {
     fun onSwipeRefresh(lifecycleOwner: LifecycleOwner)
-    fun getRandomPodcast()
     fun onUiReady(lifecycleOwner: LifecycleOwner)
 }

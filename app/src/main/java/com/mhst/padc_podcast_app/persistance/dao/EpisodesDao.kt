@@ -20,6 +20,9 @@ interface EpisodesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertEpisode(podcastWrapperVo: PodcastWrapperVo)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun addAll(list : List<PodcastWrapperVo>)
+
     @Query("delete from episodes")
     fun delteAllEpisodes()
 

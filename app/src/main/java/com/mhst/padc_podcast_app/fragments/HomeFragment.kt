@@ -63,7 +63,6 @@ class HomeFragment : Fragment(),HomeView {
         setupPresenter()
         exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
         homePresenter.onUiReady(this)
-        homePresenter.getRandomPodcast()
     }
 
     companion object {

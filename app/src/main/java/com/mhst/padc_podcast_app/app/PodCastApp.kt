@@ -3,6 +3,8 @@ package com.mhst.padc_podcast_app.app
 import android.app.Application
 import androidx.work.OneTimeWorkRequest
 import androidx.work.WorkManager
+import com.mhst.padc_podcast_app.data.FirebasePodcastImpl
+import com.mhst.padc_podcast_app.data.model.PodcastModelImpl
 import com.mhst.padc_podcast_app.workers.GenreWorker
 import com.mhst.padc_podcast_app.workers.PlayListWorker
 
@@ -12,9 +14,9 @@ import com.mhst.padc_podcast_app.workers.PlayListWorker
 class PodCastApp : Application() {
     override fun onCreate() {
         super.onCreate()
-        //PodcastModelImpl.initDb(this)
-        oneTimeGenres()
-        oneTimePlayLists()
+        FirebasePodcastImpl.initDb(this)
+//        oneTimeGenres()
+//        oneTimePlayLists()
     }
 
     private fun oneTimeGenres(){

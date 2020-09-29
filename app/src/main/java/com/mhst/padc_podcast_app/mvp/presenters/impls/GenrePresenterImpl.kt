@@ -2,6 +2,7 @@ package com.mhst.padc_podcast_app.mvp.presenters.impls
 
 import android.util.Log
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.Observer
 import com.mhst.padc_podcast_app.data.model.PodcastModel
 import com.mhst.padc_podcast_app.data.model.PodcastModelImpl
 import com.mhst.padc_podcast_app.mvp.AbstractBasePresenter
@@ -17,8 +18,9 @@ class GenrePresenterImpl : GenrePresenter, AbstractBasePresenter<GenreView>() {
 
     override fun onUiReady(lifecycleOwner: LifecycleOwner) {
         model.getGenres(onSuccess = {
-            Log.d("successGenre",it.size.toString())
-            mView?.displayGenres(it)
+            it.observe(lifecycleOwner, Observer {
+                mView?.displayGenres(it)
+            })
         },onFail = {
             mView?.showError(it)
         })
