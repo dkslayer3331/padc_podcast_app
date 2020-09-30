@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity(),DetailView {
 
-
     lateinit var mDetailPresenter: DetailPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,7 +26,7 @@ class DetailActivity : AppCompatActivity(),DetailView {
 
         val jsonStr = intent.getStringExtra(IE_PODCAST)
 
-        val data = Gson().fromJson(jsonStr,PlaylistVo::class.java)
+        val data = Gson().fromJson(jsonStr,PodcastWrapperVo::class.java)
 
         setupPresenter()
 
@@ -51,10 +50,14 @@ class DetailActivity : AppCompatActivity(),DetailView {
         }
     }
 
-    override fun binData(playlistVo: PlaylistVo) {
-            Glide.with(this).load(playlistVo.data.image).into(ivDetailBanner)
-            tvDetailTitle.text = playlistVo.data.title
-            tvDetailDesc.text = Html.fromHtml(playlistVo.data.description)
+    override fun binData(podcastWrapperVo: PodcastWrapperVo) {
+            Glide.with(this).load(podcastWrapperVo.image).into(ivDetailBanner)
+            tvDetailTitle.text = podcastWrapperVo.title
+            tvDetailDesc.text = Html.fromHtml(podcastWrapperVo.description)
+    }
+
+    override fun binAudio(url: String) {
+
     }
 
 }

@@ -22,25 +22,25 @@ abstract class BaseModel {
 
     protected var realtimeDatabase : DatabaseReference = Firebase.database.reference
 
-    protected  var mApi : PodcastApi
+  //  protected  var mApi : PodcastApi
 
-        init {
-        val mOkHttpClient = OkHttpClient.Builder()
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(15, TimeUnit.SECONDS)
-            .writeTimeout(15, TimeUnit.SECONDS)
-            .build()
+//        init {
+//        val mOkHttpClient = OkHttpClient.Builder()
+//            .connectTimeout(15, TimeUnit.SECONDS)
+//            .readTimeout(15, TimeUnit.SECONDS)
+//            .writeTimeout(15, TimeUnit.SECONDS)
+//            .build()
+//
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl(BASE_URL)
+//            .client(mOkHttpClient)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+//            .build()
+//
+//        mApi = retrofit.create(PodcastApi::class.java)
 
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(mOkHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-
-        mApi = retrofit.create(PodcastApi::class.java)
-
-    }
+//    }
 
     fun initDb(context: Context){
         mDb = PodcastDb.getDBInstance(context)

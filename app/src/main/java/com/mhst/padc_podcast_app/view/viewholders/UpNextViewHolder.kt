@@ -1,5 +1,6 @@
 package com.mhst.padc_podcast_app.view.viewholders
 
+import android.text.Html
 import android.view.View
 import com.bumptech.glide.Glide
 import com.mhst.padc_podcast_app.data.dummy.DummyVo
@@ -22,9 +23,9 @@ class UpNextViewHolder(itemView: View,delegate: PodcastDelegate) : BaseViewHolde
 
     override fun bindData(data: PodcastWrapperVo) {
         mData = data
-//        Glide.with(itemView.context).load(data.data.image).into(itemView.ivPlayList)
-//        itemView.tvHoursLeft.text = ""
-//        itemView.tvPlaylistLabel.text = data.data.podcast.title
-//        itemView.tvPlaylistTitle.text = data.data.title
+        Glide.with(itemView.context).load(data.image).into(itemView.ivPlayList)
+        itemView.tvHoursLeft.text = ""
+        itemView.tvPlaylistLabel.text = data.title
+        itemView.tvPlaylistTitle.text = Html.fromHtml(data.description)
     }
 }
