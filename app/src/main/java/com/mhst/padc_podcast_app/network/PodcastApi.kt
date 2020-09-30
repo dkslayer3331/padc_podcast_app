@@ -25,6 +25,4 @@ interface PodcastApi {
     @GET("playlists/{id}?type=episode_list&last_timestamp_ms=0&sort=recent_added_first")
     fun getPlayList(@Path("id") id : String) : Observable<PlaylistResponse>
 
-
-
 }

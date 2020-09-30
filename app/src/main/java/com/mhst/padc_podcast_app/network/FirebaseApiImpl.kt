@@ -1,4 +1,4 @@
-package com.mhst.padc_podcast_app.data
+package com.mhst.padc_podcast_app.network
 
 import androidx.lifecycle.LiveData
 import com.google.firebase.database.DataSnapshot
@@ -10,20 +10,17 @@ import com.google.firebase.ktx.Firebase
 import com.mhst.padc_podcast_app.data.model.BaseModel
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
-import com.mhst.padc_podcast_app.network.PodCastFirebaseApi
 
 /**
  * Created by Moe Htet on 27,September,2020
  */
-object FirebasePodcastImpl : PodCastFirebaseApi,BaseModel() {
-
-    private val database: DatabaseReference = Firebase.database.reference
+object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
 
     override fun getPlayList(
         onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit,
         onFail: (String) -> Unit
     ) {
-        database.child("latest_episodes").addValueEventListener(object : ValueEventListener{
+        realtimeDatabase.child("latest_episodes").addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 onFail(error.message)
             }
@@ -42,7 +39,7 @@ object FirebasePodcastImpl : PodCastFirebaseApi,BaseModel() {
     }
 
     override fun getGenres(onSuccess: (LiveData<List<GenreVO>>) -> Unit, onFail: (String) -> Unit) {
-        database.child("genres").addValueEventListener(object : ValueEventListener{
+        realtimeDatabase.child("genres").addValueEventListener(object : ValueEventListener{
             override fun onCancelled(error: DatabaseError) {
                 onFail(error.message)
             }

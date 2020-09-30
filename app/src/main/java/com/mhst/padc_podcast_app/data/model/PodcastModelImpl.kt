@@ -2,7 +2,7 @@ package com.mhst.padc_podcast_app.data.model
 
 import androidx.lifecycle.LiveData
 import com.mhst.padc_podcast_app.network.PodCastFirebaseApi
-import com.mhst.padc_podcast_app.data.FirebasePodcastImpl
+import com.mhst.padc_podcast_app.network.FirebaseApiImpl
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 
@@ -12,7 +12,8 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 object PodcastModelImpl : PodcastModel{
 
     //realtime database
-    override var mApi: PodCastFirebaseApi = FirebasePodcastImpl
+    private var mApi: PodCastFirebaseApi =
+        FirebaseApiImpl
 
     override fun getPlayList(
         onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit,

@@ -10,8 +10,6 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
  */
 interface PodcastModel {
 
-    var mApi : PodCastFirebaseApi
-
     fun getPlayList(onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit, onFail : (String) -> Unit)
     fun getGenres(onSuccess: (LiveData<List<GenreVO>>) -> Unit, onFail : (String) -> Unit)
 
