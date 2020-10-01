@@ -15,10 +15,10 @@ import com.mhst.shared.base.BaseRecyclerAdapter
  * Created by Moe Htet on 30,August,2020
  */
 //for up next
-class UpNextAdapter(private val delegate: PodcastDelegate) : BaseRecyclerAdapter<UpNextViewHolder, PodcastWrapperVo>() {
+class UpNextAdapter(private val delegate: PodcastDelegate, private val isDownload : Boolean = false) : BaseRecyclerAdapter<UpNextViewHolder, PodcastWrapperVo>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UpNextViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.viewholder_upnext,parent,false)
-        return UpNextViewHolder(view,delegate)
+        return UpNextViewHolder(view,delegate,isDownload)
     }
 }

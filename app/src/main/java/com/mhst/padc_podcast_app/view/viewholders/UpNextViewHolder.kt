@@ -13,16 +13,23 @@ import kotlinx.android.synthetic.main.viewholder_upnext.view.*
 /**
  * Created by Moe Htet on 30,August,2020
  */
-class UpNextViewHolder(itemView: View,delegate: PodcastDelegate) : BaseViewHolder<PodcastWrapperVo>(itemView) {
+class UpNextViewHolder(itemView: View,delegate: PodcastDelegate,val isDownload : Boolean) : BaseViewHolder<PodcastWrapperVo>(itemView) {
 
     init {
         itemView.setOnClickListener {
             delegate.onTap(mData ?: PodcastWrapperVo())
         }
+        itemView.ivDownload.setOnClickListener {
+
+        }
     }
 
     override fun bindData(data: PodcastWrapperVo) {
         mData = data
+        if(isDownload){
+            itemView.ivDownload.visibility = View.GONE
+            itemView.progressBar.visibility = View.GONE
+        }
         Glide.with(itemView.context).load(data.image).into(itemView.ivPlayList)
         itemView.tvHoursLeft.text = ""
         itemView.tvPlaylistLabel.text = data.title

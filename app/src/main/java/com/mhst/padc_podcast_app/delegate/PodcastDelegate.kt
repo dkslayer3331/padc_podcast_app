@@ -8,4 +8,5 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
  */
 interface PodcastDelegate {
     fun onTap(podcastWrapperVo : PodcastWrapperVo)
+    fun onTapDownload(podcastWrapperVo: PodcastWrapperVo)
 }

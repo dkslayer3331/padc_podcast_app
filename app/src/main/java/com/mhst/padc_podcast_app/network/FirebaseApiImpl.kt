@@ -8,6 +8,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.mhst.padc_podcast_app.data.model.BaseModel
+import com.mhst.padc_podcast_app.data.vo.DownloadVO
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 
@@ -55,5 +56,16 @@ object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
                 onSuccess(mDb.genreDao().getAllGenres())
             }
         })
+    }
+
+    override fun getDownloads(
+        onSuccess: (LiveData<List<DownloadVO>>) -> Unit,
+        onFail: (String) -> Unit
+    ) {
+        try{
+            onSuccess(mDb.downloadDao().getAllDownloads())
+        }catch (e : Exception){
+            onFail(e.localizedMessage)
+        }
     }
 }

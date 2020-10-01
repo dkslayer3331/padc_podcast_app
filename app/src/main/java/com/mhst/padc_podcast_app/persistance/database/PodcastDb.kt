@@ -7,6 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
+import com.mhst.padc_podcast_app.persistance.dao.DownloadDao
 import com.mhst.padc_podcast_app.persistance.dao.EpisodesDao
 import com.mhst.padc_podcast_app.persistance.dao.GenreDao
 import com.mhst.padc_podcast_app.persistance.typedConverters.PodcastConverter
@@ -40,5 +41,7 @@ abstract class PodcastDb : RoomDatabase() {
     abstract fun genreDao() : GenreDao
 
     abstract fun episodeDao() : EpisodesDao
+
+    abstract fun downloadDao() : DownloadDao
 
 }

@@ -7,17 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.adapters.DownloadAdapter
+import com.mhst.padc_podcast_app.adapters.UpNextAdapter
 import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
+import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
+import com.mhst.padc_podcast_app.mvp.view.DownloadView
 import kotlinx.android.synthetic.main.fragment_download.*
 
-class DownloadFragment : Fragment() {
+class DownloadFragment : Fragment(), DownloadView {
 
-    private lateinit var downloadAdapter: DownloadAdapter
+    private lateinit var downloadAdapter: UpNextAdapter
 
     private fun setupRecycler(){
-        downloadAdapter = DownloadAdapter()
+        downloadAdapter = UpNextAdapter(this,true)
         rvDownload.adapter = downloadAdapter
-        downloadAdapter.setNewData(DummyDataUtils.getDummys())
+    }
+
+    private fun setupPresenter(){
+
     }
 
     override fun onCreateView(
@@ -37,5 +43,17 @@ class DownloadFragment : Fragment() {
         @JvmStatic
         fun newInstance() =
             DownloadFragment()
+    }
+
+    override fun showDownloads(list: List<PodcastWrapperVo>) {
+        downloadAdapter.setNewData(list.toMutableList())
+    }
+
+    override fun onTap(podcastWrapperVo: PodcastWrapperVo) {
+
+    }
+
+    override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo) {
+
     }
 }
