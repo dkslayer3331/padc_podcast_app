@@ -13,4 +13,5 @@ interface HomeView : BaseView,PodcastDelegate {
     fun enableSwipeRefresh()
     fun disableSwipeRefresh()
     fun playRandomPodcast(url : String?)
+    fun downloadPodcast(podcastWrapperVo: PodcastWrapperVo)
 }

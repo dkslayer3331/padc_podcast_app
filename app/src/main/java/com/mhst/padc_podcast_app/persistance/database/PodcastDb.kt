@@ -5,6 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.mhst.padc_podcast_app.data.vo.DownloadVO
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.persistance.dao.DownloadDao
@@ -15,7 +16,7 @@ import com.mhst.padc_podcast_app.persistance.typedConverters.PodcastConverter
 /**
  * Created by Moe Htet on 05,September,2020
  */
-@Database(entities = [GenreVO::class,PodcastWrapperVo::class], version = 7, exportSchema = false)
+@Database(entities = [GenreVO::class,PodcastWrapperVo::class,DownloadVO::class], version = 8, exportSchema = false)
 @TypeConverters(PodcastConverter::class)
 abstract class PodcastDb : RoomDatabase() {
     companion object {

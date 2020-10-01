@@ -1,5 +1,6 @@
 package com.mhst.padc_podcast_app.delegate
 
+import android.view.View
 import androidx.fragment.app.FragmentActivity
 import com.mhst.padc_podcast_app.data.vo.PlaylistVo
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
@@ -9,5 +10,5 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
  */
 interface PodcastDelegate {
     fun onTap(podcastWrapperVo : PodcastWrapperVo)
-    fun onTapDownload(podcastWrapperVo: PodcastWrapperVo,fragmentActivity: FragmentActivity)
+    fun onTapDownload(podcastWrapperVo: PodcastWrapperVo,itemview: View)
 }

@@ -20,7 +20,9 @@ class UpNextViewHolder(itemView: View,delegate: PodcastDelegate,val isDownload :
             delegate.onTap(mData ?: PodcastWrapperVo())
         }
         itemView.ivDownload.setOnClickListener {
-
+            mData?.let {
+                delegate.onTapDownload(it,itemView)
+            }
         }
     }
 

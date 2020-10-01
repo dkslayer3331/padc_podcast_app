@@ -61,7 +61,7 @@ class DownloadFragment : Fragment(), DownloadView {
 
     }
 
-    override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo) {
+    override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo, itemview: View) {
 
     }
 }

@@ -1,10 +1,15 @@
 package com.mhst.padc_podcast_app.mvp.presenters.impls
 
+import android.Manifest
 import android.app.DownloadManager
 import android.content.Context
+import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
+import androidx.core.app.ActivityCompat.requestPermissions
+import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
@@ -42,12 +47,14 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
             Log.d("downloadErr",it)
         }
 
-        val downloadManager = fragmentActivity.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-        val uri = Uri.parse(podcastWrapperVo.audio)
-        val request = DownloadManager.Request(uri)
-        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${podcastWrapperVo.id}.mp3")
-            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-        downloadManager.enqueue(request)
+        mView?.downloadPodcast(podcastWrapperVo)
+
+//        val downloadManager = fragmentActivity.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+//        val uri = Uri.parse(podcastWrapperVo.audio)
+//        val request = DownloadManager.Request(uri)
+//        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${podcastWrapperVo.id}.mp3")
+//            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+//        downloadManager.enqueue(request)
 
     }
 
