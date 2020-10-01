@@ -68,4 +68,15 @@ object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
             onFail(e.localizedMessage)
         }
     }
+
+    override fun saveDownload(podcastWrapperVo: PodcastWrapperVo, onFail: (String) -> Unit) {
+      try{
+          mDb.downloadDao().addDownload(DownloadVO(podcastWrapperVo.id,podcastWrapperVo))
+
+
+
+      }catch (e : Exception){
+          onFail(e.localizedMessage)
+      }
+    }
 }

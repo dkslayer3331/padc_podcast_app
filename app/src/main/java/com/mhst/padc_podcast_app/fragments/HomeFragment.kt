@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.ViewModelProvider
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.activities.DetailActivity
@@ -94,7 +95,10 @@ class HomeFragment : Fragment(),HomeView {
         startActivity(DetailActivity.onNewIntent(requireContext(),podcastWrapperVo))
     }
 
-    override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo) {
-
+    override fun onTapDownload(
+        podcastWrapperVo: PodcastWrapperVo,
+        fragmentActivity: FragmentActivity
+    ) {
+        homePresenter.onDownload(podcastWrapperVo)
     }
 }

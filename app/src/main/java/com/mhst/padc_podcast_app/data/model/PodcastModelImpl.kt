@@ -13,8 +13,7 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 object PodcastModelImpl : PodcastModel{
 
     //realtime database
-    private var mApi: PodCastFirebaseApi =
-        FirebaseApiImpl
+    private var mApi: PodCastFirebaseApi = FirebaseApiImpl
 
     override fun getPlayList(
         onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit,
@@ -32,5 +31,9 @@ object PodcastModelImpl : PodcastModel{
         onFail: (String) -> Unit
     ) {
         mApi.getDownloads(onSuccess,onFail)
+    }
+
+    override fun saveDownloads(podcastWrapperVo: PodcastWrapperVo, onFail: (String) -> Unit) {
+        mApi.saveDownload(podcastWrapperVo,onFail)
     }
 }
