@@ -27,6 +27,8 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     private val model : PodcastModel = PodcastModelImpl
 
+
+
     override fun onUiReady(lifecycleOwner: LifecycleOwner) {
         model.getPlayList(onSuccess = {
            it.observe(lifecycleOwner, Observer {

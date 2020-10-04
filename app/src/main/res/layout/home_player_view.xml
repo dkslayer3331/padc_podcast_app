@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     android:background="@drawable/round_corner_purple_textview">
 
     <ImageView
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvPlayerViewTitle" />
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/exo_progress_placeholder"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -79,37 +79,37 @@
         app:layout_constraintTop_toBottomOf="@+id/ivPlayerView"
         app:layout_constraintVertical_bias="0.0" />
 
-    <ImageView
-        android:id="@+id/ivPlayBackward"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/exo_rew"
         android:layout_width="48dp"
         android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvSpeedOne"
-        app:layout_constraintEnd_toStartOf="@+id/ivPlay"
+        app:layout_constraintEnd_toStartOf="@+id/exo_play"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tvSpeedOne"
         app:layout_constraintTop_toTopOf="@+id/tvSpeedOne"
         app:srcCompat="@drawable/ic_replay_10" />
 
-    <ImageView
-        android:id="@+id/ivPause"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/exo_pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPlay"
-        app:layout_constraintEnd_toStartOf="@+id/ivPlayForward"
+        app:layout_constraintBottom_toBottomOf="@+id/exo_play"
+        app:layout_constraintEnd_toStartOf="@+id/exo_ffwd"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivPlay"
-        app:layout_constraintTop_toTopOf="@+id/ivPlay"
+        app:layout_constraintStart_toEndOf="@+id/exo_play"
+        app:layout_constraintTop_toTopOf="@+id/exo_play"
         app:srcCompat="@drawable/ic_baseline_pause_circle_filled_24" />
 
-    <ImageView
-        android:id="@+id/ivPlayForward"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/exo_ffwd"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPause"
+        app:layout_constraintBottom_toBottomOf="@+id/exo_pause"
         app:layout_constraintEnd_toStartOf="@+id/tvPlayViewZz"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivPause"
-        app:layout_constraintTop_toTopOf="@+id/ivPause"
+        app:layout_constraintStart_toEndOf="@+id/exo_pause"
+        app:layout_constraintTop_toTopOf="@+id/exo_pause"
         app:srcCompat="@drawable/ic_forward_30" />
 
     <TextView
@@ -119,21 +119,21 @@
         android:text="Zz"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPlayForward"
+        app:layout_constraintBottom_toBottomOf="@+id/exo_ffwd"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivPlayForward"
-        app:layout_constraintTop_toTopOf="@+id/ivPlayForward" />
+        app:layout_constraintStart_toEndOf="@+id/exo_ffwd"
+        app:layout_constraintTop_toTopOf="@+id/exo_ffwd" />
 
-    <ImageView
-        android:id="@+id/ivPlay"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/exo_play"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:src="@drawable/ic_baseline_play_circle_filled_24"
-        app:layout_constraintBottom_toBottomOf="@+id/ivPlayBackward"
-        app:layout_constraintEnd_toStartOf="@+id/ivPause"
+        app:layout_constraintBottom_toBottomOf="@+id/exo_rew"
+        app:layout_constraintEnd_toStartOf="@+id/exo_pause"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/ivPlayBackward"
-        app:layout_constraintTop_toTopOf="@+id/ivPlayBackward" />
+        app:layout_constraintStart_toEndOf="@+id/exo_rew"
+        app:layout_constraintTop_toTopOf="@+id/exo_rew" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

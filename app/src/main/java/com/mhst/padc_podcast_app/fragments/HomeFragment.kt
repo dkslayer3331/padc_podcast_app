@@ -55,6 +55,11 @@ class HomeFragment : Fragment(),HomeView {
         rvUpNext.adapter = upNextAdapter
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+       // exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
+    }
+
     private fun setupPresenter(){
        activity?.let {
            homePresenter = ViewModelProvider(it)[HomePresenterImpl::class.java]
@@ -72,10 +77,10 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        //super.onViewCreated(view, savedInstanceState)
+        exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
         setupRecycler()
         setupPresenter()
-        exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
         homePresenter.onUiReady(this)
     }
 
@@ -86,7 +91,6 @@ class HomeFragment : Fragment(),HomeView {
 
     override fun displayTracks(tracks: List<PodcastWrapperVo>) {
         upNextAdapter.setNewData(tracks.toMutableList())
-
     }
 
     override fun enableSwipeRefresh() {
@@ -98,7 +102,6 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun playRandomPodcast(url: String?) {
-        if(vpHomePlayer != null)
         url?.let {
             exoplayerViewpod.bindData(url)
         }
