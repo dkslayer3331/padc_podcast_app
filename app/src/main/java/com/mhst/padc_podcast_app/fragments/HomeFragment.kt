@@ -2,12 +2,9 @@ package com.mhst.padc_podcast_app.fragments
 
 import android.Manifest
 import android.app.DownloadManager
-import android.content.ComponentName
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.util.Log
@@ -24,7 +21,7 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenter
 import com.mhst.padc_podcast_app.mvp.presenters.impls.HomePresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.HomeView
-import com.mhst.padc_podcast_app.view.viewpods.ExoplayerViewpod
+import com.mhst.padc_podcast_app.view.viewpods.HomePlayerView
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -34,7 +31,7 @@ class HomeFragment : Fragment(),HomeView {
 
     private lateinit var homePresenter: HomePresenter
 
-    private lateinit var exoplayerViewpod: ExoplayerViewpod
+    private lateinit var exoplayerViewpod: HomePlayerView
 
     var tempPodcast = PodcastWrapperVo()
 
@@ -55,11 +52,6 @@ class HomeFragment : Fragment(),HomeView {
         rvUpNext.adapter = upNextAdapter
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-       // exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
-    }
-
     private fun setupPresenter(){
        activity?.let {
            homePresenter = ViewModelProvider(it)[HomePresenterImpl::class.java]
@@ -77,8 +69,8 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        //super.onViewCreated(view, savedInstanceState)
-        exoplayerViewpod = vpHomePlayer as ExoplayerViewpod
+        super.onViewCreated(view, savedInstanceState)
+        exoplayerViewpod = vpMainPlayer as HomePlayerView
         setupRecycler()
         setupPresenter()
         homePresenter.onUiReady(this)
@@ -101,10 +93,8 @@ class HomeFragment : Fragment(),HomeView {
 
     }
 
-    override fun playRandomPodcast(url: String?) {
-        url?.let {
-            exoplayerViewpod.bindData(url)
-        }
+    override fun playRandomPodcast(podcastWrapperVo: PodcastWrapperVo) {
+        exoplayerViewpod.bindRandomPodcast(podcastWrapperVo)
     }
 
     override fun downloadPodcast(podcastWrapperVo: PodcastWrapperVo) {

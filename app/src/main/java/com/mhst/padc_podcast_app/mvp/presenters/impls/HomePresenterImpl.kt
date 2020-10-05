@@ -33,7 +33,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
         model.getPlayList(onSuccess = {
            it.observe(lifecycleOwner, Observer {
                mView?.displayTracks(it)
-               mView?.playRandomPodcast(it.random().audio)
+               mView?.playRandomPodcast(it.random())
            })
 
         },onFail = {

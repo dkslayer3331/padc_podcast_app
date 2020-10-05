@@ -1,139 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="200dp"-->
+<!--    android:background="@drawable/round_corner_purple_textview">-->
+
+<!--    <ImageView-->
+<!--        android:id="@+id/ivPlayerView"-->
+<!--        android:layout_width="120dp"-->
+<!--        android:layout_height="100dp"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginTop="24dp"-->
+<!--        android:background="@drawable/round_corner_imageview"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvPlayerViewTitle"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="16dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:text="Tech PodCast is Real"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/ivPlayerView"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/ivPlayerView" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvPlayerViewDesc"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:text="The show is real"-->
+<!--        android:textColor="@color/TextColorTertary"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tvPlayerViewTitle"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tvPlayerViewTitle"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvPlayerViewTitle" />-->
+
+<!--    <ProgressBar-->
+<!--        android:id="@+id/exo_progress_placeholder"-->
+<!--        style="?android:attr/progressBarStyleHorizontal"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:layout_marginEnd="16dp"-->
+<!--        android:outlineSpotShadowColor="@color/colorProgressBar"-->
+<!--        android:progress="56"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvPlayerViewHoursLeft"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tvPlayerViewDesc"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvPlayerViewDesc" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvPlayerViewHoursLeft"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:text="1hr left"-->
+<!--        android:textColor="@color/TextColorTertary"-->
+<!--        app:layout_constraintEnd_toEndOf="@+id/tvPlayerViewDesc"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/tvPlayerViewDesc" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvSpeedOne"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="24dp"-->
+<!--        android:layout_marginTop="32dp"-->
+<!--        android:layout_marginBottom="32dp"-->
+<!--        android:text="x1"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/ivPlayerView"-->
+<!--        app:layout_constraintVertical_bias="0.0" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/exo_rew"-->
+<!--        android:layout_width="48dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/tvSpeedOne"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/exo_play"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/tvSpeedOne"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/tvSpeedOne"-->
+<!--        app:srcCompat="@drawable/ic_replay_10" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/exo_pause"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/exo_play"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/exo_ffwd"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/exo_play"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/exo_play"-->
+<!--        app:srcCompat="@drawable/ic_baseline_pause_circle_filled_24" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/exo_ffwd"-->
+<!--        android:layout_width="48dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/exo_pause"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/tvPlayViewZz"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/exo_pause"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/exo_pause"-->
+<!--        app:srcCompat="@drawable/ic_forward_30" />-->
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvPlayViewZz"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Zz"-->
+<!--        android:textColor="#FFFFFF"-->
+<!--        android:textSize="18sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/exo_ffwd"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/exo_ffwd"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/exo_ffwd" />-->
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/exo_play"-->
+<!--        android:layout_width="48dp"-->
+<!--        android:layout_height="48dp"-->
+<!--        android:src="@drawable/ic_baseline_play_circle_filled_24"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/exo_rew"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/exo_pause"-->
+<!--        app:layout_constraintHorizontal_bias="0.5"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/exo_rew"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/exo_rew" />-->
+
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<com.mhst.padc_podcast_app.view.viewpods.HomePlayerView
     android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:background="@drawable/round_corner_purple_textview">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/round_corner_purple_textview"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <ImageView
-        android:id="@+id/ivPlayerView"
-        android:layout_width="120dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/round_corner_imageview"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars" />
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        app:use_controller="false"
+        app:rewind_increment="15000"
+        app:fastforward_increment="30000"
+        android:layout_height="100dp"/>
 
-    <TextView
-        android:id="@+id/tvPlayerViewTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Tech PodCast is Real"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/ivPlayerView"
-        app:layout_constraintTop_toTopOf="@+id/ivPlayerView" />
+    <com.google.android.exoplayer2.ui.PlayerControlView
+        android:id="@+id/control_view"
+        android:layout_width="match_parent"
+        app:show_timeout="0"
+        android:layout_height="wrap_content"/>
 
-    <TextView
-        android:id="@+id/tvPlayerViewDesc"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="The show is real"
-        android:textColor="@color/TextColorTertary"
-        app:layout_constraintEnd_toEndOf="@+id/tvPlayerViewTitle"
-        app:layout_constraintStart_toStartOf="@+id/tvPlayerViewTitle"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlayerViewTitle" />
-
-    <ProgressBar
-        android:id="@+id/exo_progress_placeholder"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:outlineSpotShadowColor="@color/colorProgressBar"
-        android:progress="56"
-        app:layout_constraintEnd_toStartOf="@+id/tvPlayerViewHoursLeft"
-        app:layout_constraintStart_toStartOf="@+id/tvPlayerViewDesc"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlayerViewDesc" />
-
-    <TextView
-        android:id="@+id/tvPlayerViewHoursLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="1hr left"
-        android:textColor="@color/TextColorTertary"
-        app:layout_constraintEnd_toEndOf="@+id/tvPlayerViewDesc"
-        app:layout_constraintTop_toBottomOf="@+id/tvPlayerViewDesc" />
-
-    <TextView
-        android:id="@+id/tvSpeedOne"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginBottom="32dp"
-        android:text="x1"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivPlayerView"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/exo_rew"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvSpeedOne"
-        app:layout_constraintEnd_toStartOf="@+id/exo_play"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvSpeedOne"
-        app:layout_constraintTop_toTopOf="@+id/tvSpeedOne"
-        app:srcCompat="@drawable/ic_replay_10" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/exo_pause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/exo_play"
-        app:layout_constraintEnd_toStartOf="@+id/exo_ffwd"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/exo_play"
-        app:layout_constraintTop_toTopOf="@+id/exo_play"
-        app:srcCompat="@drawable/ic_baseline_pause_circle_filled_24" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/exo_ffwd"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        app:layout_constraintBottom_toBottomOf="@+id/exo_pause"
-        app:layout_constraintEnd_toStartOf="@+id/tvPlayViewZz"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/exo_pause"
-        app:layout_constraintTop_toTopOf="@+id/exo_pause"
-        app:srcCompat="@drawable/ic_forward_30" />
-
-    <TextView
-        android:id="@+id/tvPlayViewZz"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Zz"
-        android:textColor="#FFFFFF"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/exo_ffwd"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/exo_ffwd"
-        app:layout_constraintTop_toTopOf="@+id/exo_ffwd" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/exo_play"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:src="@drawable/ic_baseline_play_circle_filled_24"
-        app:layout_constraintBottom_toBottomOf="@+id/exo_rew"
-        app:layout_constraintEnd_toStartOf="@+id/exo_pause"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/exo_rew"
-        app:layout_constraintTop_toTopOf="@+id/exo_rew" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</com.mhst.padc_podcast_app.view.viewpods.HomePlayerView>

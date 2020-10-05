@@ -30,19 +30,17 @@
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
 
-    <com.mhst.padc_podcast_app.view.viewpods.ExoplayerViewpod
-        android:id="@+id/vpHomePlayer"
+    <include
+        android:id="@+id/vpMainPlayer"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="8dp"
-        app:controller_layout_id="@layout/home_player_view"
-        app:fastforward_increment="30000"
+        layout="@layout/home_player_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvPodCastLabel"
-        app:rewind_increment="10000" />
+        app:layout_constraintTop_toBottomOf="@id/tvPodCastLabel" />
 
     <TextView
         android:id="@+id/textView"
@@ -54,9 +52,9 @@
         android:lineSpacingMultiplier="1.4"
         android:text="@string/main_screen_desc"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/vpHomePlayer"
-        app:layout_constraintStart_toStartOf="@+id/vpHomePlayer"
-        app:layout_constraintTop_toBottomOf="@+id/vpHomePlayer" />
+        app:layout_constraintEnd_toEndOf="@+id/vpMainPlayer"
+        app:layout_constraintStart_toStartOf="@+id/vpMainPlayer"
+        app:layout_constraintTop_toBottomOf="@+id/vpMainPlayer" />
 
     <TextView
         android:id="@+id/tvLabelUpNext"
