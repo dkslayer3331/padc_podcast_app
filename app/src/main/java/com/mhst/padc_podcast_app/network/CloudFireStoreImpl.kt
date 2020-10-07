@@ -7,6 +7,7 @@ import com.mhst.padc_podcast_app.NO_INTERNET_CONNECTION
 import com.mhst.padc_podcast_app.data.model.BaseModel
 import com.mhst.padc_podcast_app.data.vo.DownloadVO
 import com.mhst.padc_podcast_app.data.vo.GenreVO
+import com.mhst.padc_podcast_app.data.vo.PodcastVo
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 
 /**
@@ -14,7 +15,7 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
  */
 object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
 
-    val fireStore = Firebase.firestore
+    private val fireStore = Firebase.firestore
 
     override fun getPlayList(
         onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit,
@@ -39,11 +40,21 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
                     podcastWrapperVo.title = data?.get("title") as String
                     podcastWrapperVo.description = data?.get("description") as String
                     podcastWrapperVo.link = data?.get("link") as String
-                    podcastWrapperVo.audioLengthSec = data?.get("audio_length_sec") as Int
+                    podcastWrapperVo.audioLengthSec = (data?.get("audio_length_sec") as Long).toInt()
                     podcastWrapperVo.listennotesEditUrl = data?.get("listennotes_edit_url") as String
                     podcastWrapperVo.explicitContent = data?.get("explicit_content") as Boolean
                     podcastWrapperVo.thumbnail = data?.get("thumbnail") as String
                     podcastWrapperVo.image = data?.get("image") as String
+                    //podcastWrapperVo.podcast = data?.get("podcast") as PodcastVo
+                    val podcast = data?.get("podcast") as Map<String,Any>
+                    podcastWrapperVo.podcast = PodcastVo(
+                        image = podcast["image"] as String,
+                        id = podcast["id"] as String,
+                        thumbnail = podcast["thumbnail"] as String,
+                        publisher = podcast["publisher"] as String,
+                        listenNotesUrl = podcast["listennotes_url"] as String,
+                        title = podcast["title"] as String
+                    )
                     temp.add(podcastWrapperVo)
                 }
 

@@ -6,6 +6,7 @@ import com.mhst.padc_podcast_app.network.PodCastFirebaseApi
 import com.mhst.padc_podcast_app.network.FirebaseApiImpl
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
+import com.mhst.padc_podcast_app.network.CloudFireStoreImpl
 
 /**
  * Created by Moe Htet on 27,September,2020
@@ -13,7 +14,10 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 object PodcastModelImpl : PodcastModel{
 
     //realtime database
-    private var mApi: PodCastFirebaseApi = FirebaseApiImpl
+    //private var mApi: PodCastFirebaseApi = FirebaseApiImpl
+
+    //cloudfirestore
+    private var mApi: PodCastFirebaseApi = CloudFireStoreImpl
 
     override fun getPlayList(
         onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit,
