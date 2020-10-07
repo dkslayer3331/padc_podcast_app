@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.mhst.padc_podcast_app.R
+import com.mhst.padc_podcast_app.activities.DetailActivity
 import com.mhst.padc_podcast_app.adapters.DownloadAdapter
 import com.mhst.padc_podcast_app.adapters.UpNextAdapter
 import com.mhst.padc_podcast_app.data.dummy.DummyDataUtils
@@ -58,7 +59,7 @@ class DownloadFragment : Fragment(), DownloadView {
     }
 
     override fun onTap(podcastWrapperVo: PodcastWrapperVo) {
-
+        startActivity(DetailActivity.onNewIntent(requireActivity(),podcastWrapperVo))
     }
 
     override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo, itemview: View) {
