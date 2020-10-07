@@ -73,8 +73,6 @@ object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
       try{
           mDb.downloadDao().addDownload(DownloadVO(podcastWrapperVo.id,podcastWrapperVo))
 
-
-
       }catch (e : Exception){
           onFail(e.localizedMessage)
       }

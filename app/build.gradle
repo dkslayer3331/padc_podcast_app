@@ -93,5 +93,6 @@ dependencies {
     //firebase
     implementation 'com.google.firebase:firebase-analytics:17.5.0'
     implementation 'com.google.firebase:firebase-database-ktx:19.4.0'
+    implementation 'com.google.firebase:firebase-firestore-ktx:21.6.0'
 
 }

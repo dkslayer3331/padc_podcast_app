@@ -24,7 +24,7 @@ data class PodcastWrapperVo(
 	var listennotesEditUrl: String = "",
 
 	@field:SerializedName("audio_length_sec")
-	val audioLengthSec: Int = 0,
+	var audioLengthSec: Int = 0,
 
 	@SerializedName("link")
 	var link: String = "",
