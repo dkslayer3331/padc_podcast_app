@@ -14,15 +14,20 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.mvp.presenters.DetailPresenter
 import com.mhst.padc_podcast_app.mvp.presenters.impls.DetailPresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.DetailView
+import com.mhst.padc_podcast_app.view.viewpods.DetailPlayerView
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity(),DetailView {
 
     lateinit var mDetailPresenter: DetailPresenter
+    
+    lateinit var vpDetail : DetailPlayerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+        vpDetail = vpDetailPlayer as DetailPlayerView
 
         val jsonStr = intent.getStringExtra(IE_PODCAST)
 
@@ -32,11 +37,23 @@ class DetailActivity : AppCompatActivity(),DetailView {
 
         mDetailPresenter.onUiReady(this,data)
 
+        vpDetail.bindRandomPodcast(data)
+
     }
 
     private fun setupPresenter(){
         mDetailPresenter = ViewModelProvider(this)[DetailPresenterImpl::class.java]
         mDetailPresenter.initPresenter(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        vpDetail.releasePlayer()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        vpDetail.releasePlayer()
     }
 
     companion object{

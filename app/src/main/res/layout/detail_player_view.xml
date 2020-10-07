@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.mhst.padc_podcast_app.view.viewpods.DetailPlayerView
+    android:id="@+id/detail_player_view"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:rewind_increment="15000"
+    app:fastforward_increment="30000"
+    app:show_timeout="0"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+</com.mhst.padc_podcast_app.view.viewpods.DetailPlayerView>
