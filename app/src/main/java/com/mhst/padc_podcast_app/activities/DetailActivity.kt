@@ -16,6 +16,7 @@ import com.mhst.padc_podcast_app.mvp.presenters.impls.DetailPresenterImpl
 import com.mhst.padc_podcast_app.mvp.view.DetailView
 import com.mhst.padc_podcast_app.view.viewpods.DetailPlayerView
 import kotlinx.android.synthetic.main.activity_detail.*
+import kotlinx.android.synthetic.main.content_detail.*
 
 class DetailActivity : AppCompatActivity(),DetailView {
 
@@ -26,6 +27,8 @@ class DetailActivity : AppCompatActivity(),DetailView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
+
+        setSupportActionBar(toolbar)
 
         vpDetail = vpDetailPlayer as DetailPlayerView
 
@@ -69,7 +72,9 @@ class DetailActivity : AppCompatActivity(),DetailView {
 
     override fun binData(podcastWrapperVo: PodcastWrapperVo) {
             Glide.with(this).load(podcastWrapperVo.image).into(ivDetailBanner)
-            tvDetailTitle.text = podcastWrapperVo.title
+           // tvDetailTitle.text = podcastWrapperVo.title
+            //toolbar.title = podcastWrapperVo.title
+        supportActionBar?.title = podcastWrapperVo.title
             tvDetailDesc.text = Html.fromHtml(podcastWrapperVo.description)
     }
 

@@ -95,4 +95,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database-ktx:19.4.0'
     implementation 'com.google.firebase:firebase-firestore-ktx:21.6.0'
 
+    implementation "androidx.coordinatorlayout:coordinatorlayout:1.1.0"
+    implementation 'com.google.android.material:material:1.2.1'
+
 }
