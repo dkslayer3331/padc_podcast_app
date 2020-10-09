@@ -51,6 +51,9 @@ class GenreFragment : Fragment(),GenreView {
         setupPresenter()
         setupRecycler()
         genrePresenter.onUiReady(this)
+        genreSwipeRefresh.setOnRefreshListener {
+            genrePresenter.onSwipeRefresh(this)
+        }
     }
 
     companion object {
@@ -64,11 +67,11 @@ class GenreFragment : Fragment(),GenreView {
     }
 
     override fun enableSwipeRefresh() {
-
+        genreSwipeRefresh.isRefreshing = true
     }
 
     override fun disableSwipeRefresh() {
-
+        genreSwipeRefresh.isRefreshing = false
     }
 
     override fun showError(message: String) {

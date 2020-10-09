@@ -28,7 +28,7 @@ class DetailActivity : AppCompatActivity(),DetailView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        setSupportActionBar(toolbar)
+        //setSupportActionBar(toolbar)
 
         vpDetail = vpDetailPlayer as DetailPlayerView
 
@@ -39,8 +39,6 @@ class DetailActivity : AppCompatActivity(),DetailView {
         setupPresenter()
 
         mDetailPresenter.onUiReady(this,data)
-
-        vpDetail.bindRandomPodcast(data)
 
     }
 
@@ -74,12 +72,9 @@ class DetailActivity : AppCompatActivity(),DetailView {
             Glide.with(this).load(podcastWrapperVo.image).into(ivDetailBanner)
            // tvDetailTitle.text = podcastWrapperVo.title
             //toolbar.title = podcastWrapperVo.title
-        supportActionBar?.title = podcastWrapperVo.title
+            tvDetailTitle.text = podcastWrapperVo.title
             tvDetailDesc.text = Html.fromHtml(podcastWrapperVo.description)
-    }
-
-    override fun binAudio(url: String) {
-
+            vpDetail.bindRandomPodcast(podcastWrapperVo)
     }
 
 }

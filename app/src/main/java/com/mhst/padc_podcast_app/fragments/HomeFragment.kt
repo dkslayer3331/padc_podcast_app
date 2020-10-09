@@ -74,6 +74,11 @@ class HomeFragment : Fragment(),HomeView {
         setupRecycler()
         setupPresenter()
         homePresenter.onUiReady(this)
+
+        homeSwipeRefresh.setOnRefreshListener {
+            homePresenter.onSwipeRefresh(this)
+        }
+
     }
 
     companion object {
@@ -86,11 +91,11 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun enableSwipeRefresh() {
-
+        homeSwipeRefresh.isRefreshing = true
     }
 
     override fun disableSwipeRefresh() {
-
+        homeSwipeRefresh.isRefreshing = false
     }
 
     override fun playRandomPodcast(podcastWrapperVo: PodcastWrapperVo) {

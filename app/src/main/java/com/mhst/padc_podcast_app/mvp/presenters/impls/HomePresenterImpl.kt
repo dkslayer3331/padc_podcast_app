@@ -27,18 +27,23 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     private val model : PodcastModel = PodcastModelImpl
 
-
-
-    override fun onUiReady(lifecycleOwner: LifecycleOwner) {
+    private fun requestData(lifecycleOwner: LifecycleOwner){
+        mView?.enableSwipeRefresh()
         model.getPlayList(onSuccess = {
-           it.observe(lifecycleOwner, Observer {
-               mView?.displayTracks(it)
-               mView?.playRandomPodcast(it.random())
-           })
+            it.observe(lifecycleOwner, Observer {
+                mView?.displayTracks(it)
+                mView?.playRandomPodcast(it.random())
+                mView?.disableSwipeRefresh()
+            })
 
         },onFail = {
+            mView?.disableSwipeRefresh()
             Log.d("playlistErr",it)
         })
+    }
+
+    override fun onUiReady(lifecycleOwner: LifecycleOwner) {
+        requestData(lifecycleOwner)
     }
 
     override fun onDownload(
@@ -61,6 +66,7 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
     }
 
     override fun onSwipeRefresh(lifecycleOwner: LifecycleOwner) {
+        requestData(lifecycleOwner)
     }
 
 }

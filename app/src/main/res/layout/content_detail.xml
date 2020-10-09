@@ -10,12 +10,24 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:id="@+id/tvDetailTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Ggwp is the best for me "
+            android:padding="8dp"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="18sp"/>
 
        <include
            android:id="@+id/vpReact"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:layout_below="@id/tvDetailTitle"
            layout="@layout/viewpod_reaction"/>
 
             <TextView

@@ -17,17 +17,24 @@ class GenrePresenterImpl : GenrePresenter, AbstractBasePresenter<GenreView>() {
     private val model : PodcastModel = PodcastModelImpl
 
     override fun onUiReady(lifecycleOwner: LifecycleOwner) {
-        model.getGenres(onSuccess = {
-            it.observe(lifecycleOwner, Observer {
-                mView?.displayGenres(it)
-            })
-        },onFail = {
-            mView?.showError(it)
-        })
+        requestData(lifecycleOwner)
     }
 
     override fun onSwipeRefresh(lifecycleOwner: LifecycleOwner) {
+        requestData(lifecycleOwner)
+    }
 
+    private fun requestData(lifecycleOwner: LifecycleOwner){
+        mView?.enableSwipeRefresh()
+        model.getGenres(onSuccess = {
+            it.observe(lifecycleOwner, Observer {
+                mView?.disableSwipeRefresh()
+                mView?.displayGenres(it)
+            })
+        },onFail = {
+            mView?.disableSwipeRefresh()
+            mView?.showError(it)
+        })
     }
 
 

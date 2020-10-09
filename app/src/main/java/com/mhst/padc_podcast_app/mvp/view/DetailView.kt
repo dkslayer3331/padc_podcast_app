@@ -9,5 +9,4 @@ import com.mhst.padc_podcast_app.mvp.BaseView
  */
 interface DetailView  : BaseView{
     fun binData(podcastWrapperVo: PodcastWrapperVo)
-    fun binAudio(url : String)
 }
