@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Environment
 import android.util.Log
+import android.view.View
 import androidx.core.app.ActivityCompat.requestPermissions
 import androidx.core.app.ActivityCompat.shouldShowRequestPermissionRationale
 import androidx.core.content.ContextCompat
@@ -19,6 +20,7 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.mvp.AbstractBasePresenter
 import com.mhst.padc_podcast_app.mvp.presenters.HomePresenter
 import com.mhst.padc_podcast_app.mvp.view.HomeView
+import kotlinx.android.synthetic.main.viewholder_upnext.view.*
 
 /**
  * Created by Moe Htet on 06,September,2020
@@ -48,20 +50,23 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     override fun onDownload(
         podcastWrapperVo: PodcastWrapperVo,
-        fragmentActivity: FragmentActivity
+        fragmentActivity: FragmentActivity,
+        itemView: View
     ) {
         model.saveDownloads(podcastWrapperVo){
             Log.d("downloadErr",it)
         }
 
-        mView?.downloadPodcast(podcastWrapperVo)
+        itemView.ivDownload.visibility = View.GONE
 
-//        val downloadManager = fragmentActivity.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-//        val uri = Uri.parse(podcastWrapperVo.audio)
-//        val request = DownloadManager.Request(uri)
-//        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${podcastWrapperVo.id}.mp3")
-//            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-//        downloadManager.enqueue(request)
+       // mView?.downloadPodcast(podcastWrapperVo)
+
+        val downloadManager = fragmentActivity.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+        val uri = Uri.parse(podcastWrapperVo.audio)
+        val request = DownloadManager.Request(uri)
+        request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${podcastWrapperVo.id}.mp3")
+            .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+        downloadManager.enqueue(request)
 
     }
 

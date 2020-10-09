@@ -102,36 +102,27 @@ class HomeFragment : Fragment(),HomeView {
         exoplayerViewpod.bindRandomPodcast(podcastWrapperVo)
     }
 
-    override fun downloadPodcast(podcastWrapperVo: PodcastWrapperVo) {
-        tempPodcast = podcastWrapperVo
-        val permissionCheck =
-            ContextCompat.checkSelfPermission(context!!, Manifest.permission.WRITE_EXTERNAL_STORAGE)
-        if(permissionCheck != PackageManager.PERMISSION_GRANTED){
-//            val manufacturer = "xiaomi"
-//            if (manufacturer.equals(Build.MANUFACTURER, ignoreCase = true)) {
-//                //this will open auto start screen where user can enable permission for your app
-//                val intent = Intent()
-//                intent.component = ComponentName(
-//                    "com.miui.securitycenter",
-//                    "com.miui.permcenter.autostart.AutoStartManagementActivity"
-//                )
-//                startActivity(intent)
+//    override fun downloadPodcast(podcastWrapperVo: PodcastWrapperVo) {
+//        tempPodcast = podcastWrapperVo
+//        val permissionCheck =
+//            ContextCompat.checkSelfPermission(context!!, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+//        if(permissionCheck != PackageManager.PERMISSION_GRANTED){
+//            try{
+//                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),reqCode)
+//            }catch (e : Exception){
+//                Log.d("reqErr",e.localizedMessage)
 //            }
-            try{
-                requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),reqCode)
-            }catch (e : Exception){
-                Log.d("reqErr",e.localizedMessage)
-            }
-        }
-        else {
-                val downloadManager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
-                val uri = Uri.parse(podcastWrapperVo.audio)
-                val request = DownloadManager.Request(uri)
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${podcastWrapperVo.id}.mp3")
-                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
-                downloadManager.enqueue(request)
-        }
-    }
+//        }
+//        else {
+//
+//                val downloadManager = requireActivity().getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
+//                val uri = Uri.parse(podcastWrapperVo.audio)
+//                val request = DownloadManager.Request(uri)
+//                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, "${podcastWrapperVo.id}.mp3")
+//                    .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED)
+//                downloadManager.enqueue(request)
+//        }
+//    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
@@ -159,6 +150,6 @@ class HomeFragment : Fragment(),HomeView {
     }
 
     override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo, itemview: View) {
-        homePresenter.onDownload(podcastWrapperVo,requireActivity())
+        homePresenter.onDownload(podcastWrapperVo,requireActivity(),itemview)
     }
 }
