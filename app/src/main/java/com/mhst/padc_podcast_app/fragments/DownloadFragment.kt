@@ -58,8 +58,8 @@ class DownloadFragment : Fragment(), DownloadView {
         downloadAdapter.setNewData(list.toMutableList())
     }
 
-    override fun onTap(podcastWrapperVo: PodcastWrapperVo) {
-        startActivity(DetailActivity.onNewIntent(requireActivity(),podcastWrapperVo))
+    override fun onTap(id: String) {
+        startActivity(DetailActivity.onNewIntent(requireActivity(),id))
     }
 
     override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo, itemview: View) {

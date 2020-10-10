@@ -145,8 +145,8 @@ class HomeFragment : Fragment(),HomeView {
         }
     }
 
-    override fun onTap(podcastWrapperVo: PodcastWrapperVo) {
-        startActivity(DetailActivity.onNewIntent(requireContext(),podcastWrapperVo))
+    override fun onTap(id: String) {
+        startActivity(DetailActivity.onNewIntent(requireContext(),id))
     }
 
     override fun onTapDownload(podcastWrapperVo: PodcastWrapperVo, itemview: View) {

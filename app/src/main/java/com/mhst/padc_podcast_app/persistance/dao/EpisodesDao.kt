@@ -26,4 +26,10 @@ interface EpisodesDao {
     @Query("delete from episodes")
     fun delteAllEpisodes()
 
+    @Query("select * from episodes order by random() LIMIT 1")
+    fun getRandom() : PodcastWrapperVo
+
+    @Query("select * from episodes where id =:id")
+    fun getDetail(id : String) : PodcastWrapperVo
+
 }

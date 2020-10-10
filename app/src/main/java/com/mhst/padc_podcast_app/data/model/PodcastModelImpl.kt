@@ -26,6 +26,10 @@ object PodcastModelImpl : PodcastModel{
         mApi.getPlayList(onSuccess, onFail)
     }
 
+    override fun getRandomPodcast(): PodcastWrapperVo {
+      return mApi.getRandomPodcast()
+    }
+
     override fun getGenres(onSuccess: (LiveData<List<GenreVO>>) -> Unit, onFail: (String) -> Unit) {
         mApi.getGenres(onSuccess, onFail)
     }
@@ -39,5 +43,9 @@ object PodcastModelImpl : PodcastModel{
 
     override fun saveDownloads(podcastWrapperVo: PodcastWrapperVo, onFail: (String) -> Unit) {
         mApi.saveDownload(podcastWrapperVo,onFail)
+    }
+
+    override fun getDetail(id: String): PodcastWrapperVo {
+       return mApi.getDetail(id)
     }
 }

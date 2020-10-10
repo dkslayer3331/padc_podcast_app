@@ -15,6 +15,7 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 /**
  * Created by Moe Htet on 27,September,2020
  */
+//real-time database data agent impl
 object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
 
     override fun getPlayList(
@@ -76,5 +77,13 @@ object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
       }catch (e : Exception){
           onFail(e.localizedMessage)
       }
+    }
+
+    override fun getRandomPodcast(): PodcastWrapperVo {
+        return mDb.episodeDao().getRandom()
+    }
+
+    override fun getDetail(id: String): PodcastWrapperVo {
+        return mDb.episodeDao().getDetail(id)
     }
 }

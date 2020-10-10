@@ -12,8 +12,10 @@ import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 interface PodcastModel {
 
     fun getPlayList(onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit, onFail : (String) -> Unit)
+    fun getRandomPodcast() : PodcastWrapperVo
     fun getGenres(onSuccess: (LiveData<List<GenreVO>>) -> Unit, onFail : (String) -> Unit)
     fun getDownloads(onSuccess: (LiveData<List<DownloadVO>>) -> Unit , onFail: (String) -> Unit)
     fun saveDownloads(podcastWrapperVo: PodcastWrapperVo,onFail: (String) -> Unit)
+    fun getDetail(id : String) : PodcastWrapperVo
 
 }

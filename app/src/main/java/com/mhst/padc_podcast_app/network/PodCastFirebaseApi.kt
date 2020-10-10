@@ -15,4 +15,6 @@ interface PodCastFirebaseApi {
     fun getGenres(onSuccess: (LiveData<List<GenreVO>>) -> Unit, onFail : (String) -> Unit)
     fun getDownloads(onSuccess: (LiveData<List<DownloadVO>>) -> Unit,onFail: (String) -> Unit)
     fun saveDownload(podcastWrapperVo: PodcastWrapperVo,onFail: (String) -> Unit)
+    fun getRandomPodcast() : PodcastWrapperVo
+    fun getDetail(id : String) : PodcastWrapperVo
 }

@@ -14,7 +14,7 @@ import com.mhst.padc_podcast_app.mvp.view.DownloadView
  */
 class DownloadPresenterImpl : AbstractBasePresenter<DownloadView>() , DownloadPresenter{
 
-    val model : PodcastModel = PodcastModelImpl
+    private val model : PodcastModel = PodcastModelImpl
 
     override fun onUiReady(lifecycleOwner: LifecycleOwner) {
         model.getDownloads(onSuccess = {

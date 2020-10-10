@@ -2,10 +2,12 @@ package com.mhst.padc_podcast_app.view.viewpods
 
 import android.content.Context
 import android.net.Uri
+import android.text.Html
 import android.util.AttributeSet
 import android.util.Log
 import android.widget.LinearLayout
 import androidx.core.view.isVisible
+import com.bumptech.glide.Glide
 import com.google.android.exoplayer2.ExoPlaybackException
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -15,6 +17,7 @@ import com.google.android.exoplayer2.upstream.DataSource
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import com.mhst.padc_podcast_app.R
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
+import kotlinx.android.synthetic.main.exo_player_view.view.*
 import kotlinx.android.synthetic.main.home_player_view.view.*
 
 /**
@@ -39,7 +42,7 @@ class HomePlayerView @JvmOverloads constructor(
 
         override fun onPlayerError(error: ExoPlaybackException) {
             super.onPlayerError(error)
-            error.message?.let { Log.d("isPlaying", it) }
+            error.message?.let { Log.d("isPlayingErr", it) }
         }
     }
     private var simpleExoplayer: SimpleExoPlayer? = null
@@ -53,6 +56,9 @@ class HomePlayerView @JvmOverloads constructor(
         simpleExoplayer?.seekTo(currentWindow, playbackPosition)
         simpleExoplayer?.addListener(exoPlayerEventListener)
         simpleExoplayer?.prepare(mediaSource, false, false)
+        tvPlayerTitle.text = podcastWrapperVo.title
+        tvPlayerDesc.text = Html.fromHtml(podcastWrapperVo.description)
+        Glide.with(context).load(podcastWrapperVo.image).into(ivPlayerArt)
     }
 
      fun releasePlayer(){

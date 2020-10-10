@@ -45,7 +45,6 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
                     podcastWrapperVo.explicitContent = data?.get("explicit_content") as Boolean
                     podcastWrapperVo.thumbnail = data?.get("thumbnail") as String
                     podcastWrapperVo.image = data?.get("image") as String
-                    //podcastWrapperVo.podcast = data?.get("podcast") as PodcastVo
                     val podcast = data?.get("podcast") as Map<String,Any>
                     podcastWrapperVo.podcast = PodcastVo(
                         image = podcast["image"] as String,
@@ -57,6 +56,8 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
                     )
                     temp.add(podcastWrapperVo)
                 }
+
+                mDb.episodeDao().delteAllEpisodes()
 
                 mDb.episodeDao().addAll(temp)
 
@@ -108,5 +109,13 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
         }catch ( e : Exception){
             onFail(e.localizedMessage)
         }
+    }
+
+    override fun getRandomPodcast(): PodcastWrapperVo {
+        return mDb.episodeDao().getRandom()
+    }
+
+    override fun getDetail(id: String): PodcastWrapperVo {
+        return mDb.episodeDao().getDetail(id)
     }
 }

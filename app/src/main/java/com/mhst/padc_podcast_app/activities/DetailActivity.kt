@@ -2,14 +2,13 @@ package com.mhst.padc_podcast_app.activities
 
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.google.gson.Gson
 import com.mhst.padc_podcast_app.R
-import com.mhst.padc_podcast_app.data.vo.PlaylistVo
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
 import com.mhst.padc_podcast_app.mvp.presenters.DetailPresenter
 import com.mhst.padc_podcast_app.mvp.presenters.impls.DetailPresenterImpl
@@ -28,17 +27,13 @@ class DetailActivity : AppCompatActivity(),DetailView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
-        //setSupportActionBar(toolbar)
-
         vpDetail = vpDetailPlayer as DetailPlayerView
 
-        val jsonStr = intent.getStringExtra(IE_PODCAST)
-
-        val data = Gson().fromJson(jsonStr,PodcastWrapperVo::class.java)
+        val id = intent.getStringExtra(IE_PODCAST)
 
         setupPresenter()
 
-        mDetailPresenter.onUiReady(this,data)
+        mDetailPresenter.onUiReady(this,id)
 
     }
 
@@ -61,9 +56,9 @@ class DetailActivity : AppCompatActivity(),DetailView {
 
         const val IE_PODCAST = "IE_PODCAST"
 
-        fun onNewIntent(context: Context,podcastWrapperVo: PodcastWrapperVo) : Intent{
+        fun onNewIntent(context: Context,id : String) : Intent{
             val intent = Intent(context,DetailActivity::class.java)
-            intent.putExtra(IE_PODCAST, Gson().toJson(podcastWrapperVo))
+            intent.putExtra(IE_PODCAST,id)
             return intent
         }
     }
