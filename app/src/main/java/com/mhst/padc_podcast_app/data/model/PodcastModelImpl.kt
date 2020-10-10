@@ -52,7 +52,7 @@ object PodcastModelImpl : PodcastModel,BaseModel(){
         onFail: (String) -> Unit
     ) {
         try {
-            mDb.downloadDao().getAllDownloads()
+            onSuccess(mDb.downloadDao().getAllDownloads())
         }catch (e : Exception){
             onFail(e.localizedMessage)
         }
