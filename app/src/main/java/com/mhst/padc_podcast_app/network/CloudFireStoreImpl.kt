@@ -9,6 +9,8 @@ import com.mhst.padc_podcast_app.data.vo.DownloadVO
 import com.mhst.padc_podcast_app.data.vo.GenreVO
 import com.mhst.padc_podcast_app.data.vo.PodcastVo
 import com.mhst.padc_podcast_app.data.vo.PodcastWrapperVo
+import com.mhst.padc_podcast_app.utils.toGenre
+import com.mhst.padc_podcast_app.utils.toPodcast
 
 /**
  * Created by Moe Htet on 07,October,2020
@@ -31,30 +33,7 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
 
                 for(data in datas){
                     val data = data.data
-                    val podcastWrapperVo = PodcastWrapperVo()
-                    podcastWrapperVo.id = data?.get("id") as String
-                    podcastWrapperVo.maybeAudioInvalid = data?.get("maybe_audio_invalid") as Boolean
-                    podcastWrapperVo.pubDateMs = data?.get("pub_date_ms") as Long
-                    podcastWrapperVo.audio = data?.get("audio") as String
-                    podcastWrapperVo.listennotesUrl = data?.get("listennotes_url") as String
-                    podcastWrapperVo.title = data?.get("title") as String
-                    podcastWrapperVo.description = data?.get("description") as String
-                    podcastWrapperVo.link = data?.get("link") as String
-                    podcastWrapperVo.audioLengthSec = (data?.get("audio_length_sec") as Long).toInt()
-                    podcastWrapperVo.listennotesEditUrl = data?.get("listennotes_edit_url") as String
-                    podcastWrapperVo.explicitContent = data?.get("explicit_content") as Boolean
-                    podcastWrapperVo.thumbnail = data?.get("thumbnail") as String
-                    podcastWrapperVo.image = data?.get("image") as String
-                    val podcast = data?.get("podcast") as Map<String,Any>
-                    podcastWrapperVo.podcast = PodcastVo(
-                        image = podcast["image"] as String,
-                        id = podcast["id"] as String,
-                        thumbnail = podcast["thumbnail"] as String,
-                        publisher = podcast["publisher"] as String,
-                        listenNotesUrl = podcast["listennotes_url"] as String,
-                        title = podcast["title"] as String
-                    )
-                    temp.add(podcastWrapperVo)
+                    temp.add(data.toPodcast())
                 }
 
                 mDb.episodeDao().delteAllEpisodes()
@@ -77,11 +56,7 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
 
                 for(data in datas){
                     val data = data.data
-                    val genreVO = GenreVO()
-                    genreVO.id = data?.get("id") as Long
-                    genreVO.name = data?.get("name") as String
-                    genreVO.parentId = data?.get("parent_id") as Long
-                    temp.add(genreVO)
+                    temp.add(data.toGenre())
                 }
 
                 mDb.genreDao().deleteAllGeneres()
