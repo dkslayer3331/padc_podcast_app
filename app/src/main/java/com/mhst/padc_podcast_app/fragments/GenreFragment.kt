@@ -66,6 +66,10 @@ class GenreFragment : Fragment(),GenreView {
         genreAdapter.setNewData(genres.toMutableList())
     }
 
+    override fun displayLargeBanner(genreVO: GenreVO) {
+        tvLargeBannerLabel.text = genreVO.name
+    }
+
     override fun enableSwipeRefresh() {
         genreSwipeRefresh.isRefreshing = true
     }

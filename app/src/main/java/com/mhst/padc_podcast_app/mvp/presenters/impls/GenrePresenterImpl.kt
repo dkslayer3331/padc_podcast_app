@@ -30,6 +30,7 @@ class GenrePresenterImpl : GenrePresenter, AbstractBasePresenter<GenreView>() {
             it.observe(lifecycleOwner, Observer {
                 mView?.disableSwipeRefresh()
                 mView?.displayGenres(it)
+                mView?.displayLargeBanner(model.getLargeGenre())
             })
         },onFail = {
             mView?.disableSwipeRefresh()

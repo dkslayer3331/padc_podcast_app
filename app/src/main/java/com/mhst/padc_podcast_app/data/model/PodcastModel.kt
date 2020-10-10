@@ -17,5 +17,7 @@ interface PodcastModel {
     fun getDownloads(onSuccess: (LiveData<List<DownloadVO>>) -> Unit , onFail: (String) -> Unit)
     fun saveDownloads(podcastWrapperVo: PodcastWrapperVo,onFail: (String) -> Unit)
     fun getDetail(id : String) : PodcastWrapperVo
+    fun getLargeGenre() : GenreVO
+
 
 }

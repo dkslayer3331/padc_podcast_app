@@ -48,4 +48,8 @@ object PodcastModelImpl : PodcastModel{
     override fun getDetail(id: String): PodcastWrapperVo {
        return mApi.getDetail(id)
     }
+
+    override fun getLargeGenre(): GenreVO {
+       return mApi.getLargeGenre()
+    }
 }

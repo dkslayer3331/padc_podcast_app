@@ -84,6 +84,8 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
                     temp.add(genreVO)
                 }
 
+                mDb.genreDao().deleteAllGeneres()
+
                 mDb.genreDao().addGenres(temp)
 
                 onSuccess(mDb.genreDao().getAllGenres())
@@ -117,5 +119,9 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
 
     override fun getDetail(id: String): PodcastWrapperVo {
         return mDb.episodeDao().getDetail(id)
+    }
+
+    override fun getLargeGenre(): GenreVO {
+        return mDb.genreDao().getRandom()
     }
 }

@@ -23,4 +23,8 @@ interface GenreDao {
         deleteAllGeneres()
         addGenres(genres)
     }
+
+    @Query("select * from genres order by random() LIMIT 1")
+    fun getRandom() : GenreVO
+
 }

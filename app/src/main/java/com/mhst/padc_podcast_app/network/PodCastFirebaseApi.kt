@@ -17,4 +17,5 @@ interface PodCastFirebaseApi {
     fun saveDownload(podcastWrapperVo: PodcastWrapperVo,onFail: (String) -> Unit)
     fun getRandomPodcast() : PodcastWrapperVo
     fun getDetail(id : String) : PodcastWrapperVo
+    fun getLargeGenre() : GenreVO
 }

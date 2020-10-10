@@ -8,6 +8,7 @@ import com.mhst.padc_podcast_app.mvp.BaseView
  */
 interface GenreView : BaseView {
     fun displayGenres(genres : List<GenreVO>)
+    fun displayLargeBanner(genreVO: GenreVO)
     fun enableSwipeRefresh()
     fun disableSwipeRefresh()
     fun showError(message : String)

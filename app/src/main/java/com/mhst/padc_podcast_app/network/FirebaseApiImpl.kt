@@ -34,6 +34,7 @@ object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
                         list.add(it)
                     }
                 }
+                mDb.episodeDao().delteAllEpisodes()
                 mDb.episodeDao().addAll(list)
                 onSuccess(mDb.episodeDao().getAllEpisodes())
             }
@@ -53,6 +54,7 @@ object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
                         list.add(it)
                     }
                 }
+                mDb.genreDao().deleteAllGeneres()
                 mDb.genreDao().addGenres(list)
                 onSuccess(mDb.genreDao().getAllGenres())
             }
@@ -85,5 +87,9 @@ object FirebaseApiImpl : PodCastFirebaseApi,BaseModel(){
 
     override fun getDetail(id: String): PodcastWrapperVo {
         return mDb.episodeDao().getDetail(id)
+    }
+
+    override fun getLargeGenre(): GenreVO {
+        return mDb.genreDao().getRandom()
     }
 }
