@@ -18,6 +18,6 @@ interface PodcastModel {
     fun saveDownloads(podcastWrapperVo: PodcastWrapperVo,onFail: (String) -> Unit)
     fun getDetail(id : String) : PodcastWrapperVo
     fun getLargeGenre() : GenreVO
-
+    fun sayYahallo()
 
 }

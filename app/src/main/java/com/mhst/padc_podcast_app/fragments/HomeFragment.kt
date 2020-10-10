@@ -102,6 +102,10 @@ class HomeFragment : Fragment(),HomeView {
         exoplayerViewpod.bindRandomPodcast(podcastWrapperVo)
     }
 
+    override fun sayYahallo() {
+        Log.d("yahallo","mina san")
+    }
+
 //    override fun downloadPodcast(podcastWrapperVo: PodcastWrapperVo) {
 //        tempPodcast = podcastWrapperVo
 //        val permissionCheck =

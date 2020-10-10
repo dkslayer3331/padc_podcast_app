@@ -20,6 +20,7 @@ import kotlinx.android.synthetic.main.viewholder_upnext.view.*
 /**
  * Created by Moe Htet on 06,September,2020
  */
+
 class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
 
     private val model : PodcastModel = PodcastModelImpl
@@ -52,8 +53,6 @@ class HomePresenterImpl : HomePresenter, AbstractBasePresenter<HomeView>() {
         }
 
         itemView.ivDownload.visibility = View.GONE
-
-       // mView?.downloadPodcast(podcastWrapperVo)
 
         val downloadManager = fragmentActivity.getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val uri = Uri.parse(podcastWrapperVo.audio)

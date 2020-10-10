@@ -15,12 +15,12 @@ import com.mhst.padc_podcast_app.utils.toPodcast
 /**
  * Created by Moe Htet on 07,October,2020
  */
-object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
+object CloudFireStoreImpl : PodCastFirebaseApi {
 
     private val fireStore = Firebase.firestore
 
     override fun getPlayList(
-        onSuccess: (LiveData<List<PodcastWrapperVo>>) -> Unit,
+        onSuccess: (List<PodcastWrapperVo>) -> Unit,
         onFail: (String) -> Unit
     ) {
         fireStore.collection("latest_episodes").addSnapshotListener { value, error ->
@@ -36,17 +36,13 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
                     temp.add(data.toPodcast())
                 }
 
-                mDb.episodeDao().delteAllEpisodes()
-
-                mDb.episodeDao().addAll(temp)
-
-                onSuccess(mDb.episodeDao().getAllEpisodes())
+                onSuccess(temp)
 
             }
         }
     }
 
-    override fun getGenres(onSuccess: (LiveData<List<GenreVO>>) -> Unit, onFail: (String) -> Unit) {
+    override fun getGenres(onSuccess: (List<GenreVO>) -> Unit, onFail: (String) -> Unit) {
         fireStore.collection("genres").addSnapshotListener { value, error ->
             error?.let {
                 onFail(it.message ?: NO_INTERNET_CONNECTION)
@@ -59,44 +55,10 @@ object CloudFireStoreImpl : PodCastFirebaseApi,BaseModel() {
                     temp.add(data.toGenre())
                 }
 
-                mDb.genreDao().deleteAllGeneres()
-
-                mDb.genreDao().addGenres(temp)
-
-                onSuccess(mDb.genreDao().getAllGenres())
+                onSuccess(temp)
 
             }
         }
     }
 
-    override fun getDownloads(
-        onSuccess: (LiveData<List<DownloadVO>>) -> Unit,
-        onFail: (String) -> Unit
-    ) {
-        try{
-            onSuccess(mDb.downloadDao().getAllDownloads())
-        }catch (e : Exception){
-            onFail(e.localizedMessage)
-        }
-    }
-
-    override fun saveDownload(podcastWrapperVo: PodcastWrapperVo, onFail: (String) -> Unit) {
-        try {
-            mDb.downloadDao().addDownload(DownloadVO(podcastWrapperVo.id,podcastWrapperVo))
-        }catch ( e : Exception){
-            onFail(e.localizedMessage)
-        }
-    }
-
-    override fun getRandomPodcast(): PodcastWrapperVo {
-        return mDb.episodeDao().getRandom()
-    }
-
-    override fun getDetail(id: String): PodcastWrapperVo {
-        return mDb.episodeDao().getDetail(id)
-    }
-
-    override fun getLargeGenre(): GenreVO {
-        return mDb.genreDao().getRandom()
-    }
 }

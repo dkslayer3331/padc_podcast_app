@@ -23,7 +23,7 @@ fun Map<String,Any>?.toPodcast() : PodcastWrapperVo{
     podcastWrapperVo.pubDateMs = this?.get("pub_date_ms") as Long
     podcastWrapperVo.audio = this?.get("audio") as String
     podcastWrapperVo.listennotesUrl = this?.get("listennotes_url") as String
-    podcastWrapperVo.title = this?.get("title") as String
+    podcastWrapperVo.title = this["title"] as String
     podcastWrapperVo.description = this?.get("description") as String
     podcastWrapperVo.link = this?.get("link") as String
     podcastWrapperVo.audioLengthSec = (this?.get("audio_length_sec") as Long).toInt()
